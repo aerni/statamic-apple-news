@@ -18,4 +18,32 @@ abstract class AppleNewsListener
 
         return true;
     }
+
+    protected function shouldCreateAndPublishArticle(Entry $entry): bool
+    {
+        if (! $this->isValidCollection($entry->collectionHandle())) {
+            return false;
+        }
+
+        if (! $entry->published()) {
+            return false;
+        }
+
+        if (! $entry->get('published_on_apple_news')) {
+            return false;
+        }
+
+        return true;
+    }
+
+    protected function isValidCollection(string $collectionHandle): bool
+    {
+        $collections = config('apple-news.collections', []);
+
+        if (! in_array($collectionHandle, $collections)) {
+            return false;
+        }
+
+        return true;
+    }
 }
