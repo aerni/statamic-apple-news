@@ -36,6 +36,23 @@ abstract class AppleNewsListener
         return true;
     }
 
+    protected function shouldUnpublishArticle(Entry $entry): bool
+    {
+        if (! $this->isValidCollection($entry->collectionHandle())) {
+            return false;
+        }
+
+        if (! $entry->published()) {
+            return true;
+        }
+
+        if (! $entry->get('published_on_apple_news')) {
+            return true;
+        }
+
+        return false;
+    }
+
     protected function shouldDeleteArticle(Entry $entry): bool
     {
         if (! $this->isValidCollection($entry->collectionHandle())) {

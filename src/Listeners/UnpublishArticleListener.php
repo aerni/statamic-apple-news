@@ -5,7 +5,7 @@ namespace Aerni\AppleNews\Listeners;
 use Aerni\AppleNews\Actions\UnpublishArticleAction;
 use Statamic\Events\EntrySaved;
 
-class UnpublishArticleListener
+class UnpublishArticleListener extends AppleNewsListener
 {
     private $unpublishArticleAction;
 
@@ -16,7 +16,7 @@ class UnpublishArticleListener
 
     public function handle(EntrySaved $event): void
     {
-        if (! $event->entry->published()) {
+        if ($this->shouldUnpublishArticle($event->entry)) {
             $this->unpublishArticleAction->execute($event->entry);
         }
     }
