@@ -5,7 +5,7 @@ namespace Aerni\AppleNews\Listeners;
 use Aerni\AppleNews\Actions\DeleteArticleAction;
 use Statamic\Events\EntryDeleted;
 
-class DeleteArticleListener
+class DeleteArticleListener extends AppleNewsListener
 {
     private $deleteArticleAction;
 
@@ -16,6 +16,8 @@ class DeleteArticleListener
 
     public function handle(EntryDeleted $event): void
     {
-        $this->deleteArticleAction->execute($event->entry);
+        if ($this->shouldDeleteArticle($event->entry)) {
+            $this->deleteArticleAction->execute($event->entry);
+        }
     }
 }

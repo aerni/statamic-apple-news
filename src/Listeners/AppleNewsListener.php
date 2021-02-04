@@ -36,6 +36,15 @@ abstract class AppleNewsListener
         return true;
     }
 
+    protected function shouldDeleteArticle(Entry $entry): bool
+    {
+        if (! $this->isValidCollection($entry->collectionHandle())) {
+            return false;
+        }
+
+        return true;
+    }
+
     protected function isValidCollection(string $collectionHandle): bool
     {
         $collections = config('apple-news.collections', []);
