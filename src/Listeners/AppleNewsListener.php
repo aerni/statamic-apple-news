@@ -12,7 +12,7 @@ abstract class AppleNewsListener
             return false;
         }
 
-        if (! $this->isValidCollection($entry->collectionHandle())) {
+        if (! $this->isPublishableCollection($entry->collectionHandle())) {
             return false;
         }
 
@@ -21,7 +21,7 @@ abstract class AppleNewsListener
 
     protected function shouldCreateAndPublishArticle(Entry $entry): bool
     {
-        if (! $this->isValidCollection($entry->collectionHandle())) {
+        if (! $this->isPublishableCollection($entry->collectionHandle())) {
             return false;
         }
 
@@ -38,7 +38,7 @@ abstract class AppleNewsListener
 
     protected function shouldUnpublishArticle(Entry $entry): bool
     {
-        if (! $this->isValidCollection($entry->collectionHandle())) {
+        if (! $this->isPublishableCollection($entry->collectionHandle())) {
             return false;
         }
 
@@ -55,18 +55,18 @@ abstract class AppleNewsListener
 
     protected function shouldDeleteArticle(Entry $entry): bool
     {
-        if (! $this->isValidCollection($entry->collectionHandle())) {
+        if (! $this->isPublishableCollection($entry->collectionHandle())) {
             return false;
         }
 
         return true;
     }
 
-    protected function isValidCollection(string $collectionHandle): bool
+    protected function isPublishableCollection(string $handle): bool
     {
         $collections = config('apple-news.collections', []);
 
-        if (! in_array($collectionHandle, $collections)) {
+        if (! in_array($handle, $collections)) {
             return false;
         }
 
