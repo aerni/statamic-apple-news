@@ -13,8 +13,9 @@ class ServiceProvider extends AddonServiceProvider
         'Statamic\Events\EntryDeleted' => [
             'Aerni\AppleNews\Listeners\DeleteArticleListener',
         ],
-        'Statamic\Events\EntrySaved' => [
-            'Aerni\AppleNews\Listeners\CreateAndPublishArticleListener',
+        'Statamic\Events\EntrySaving' => [
+            'Aerni\AppleNews\Listeners\CreateArticleListener',
+            'Aerni\AppleNews\Listeners\PublishArticleListener',
             'Aerni\AppleNews\Listeners\UnpublishArticleListener',
         ],
     ];

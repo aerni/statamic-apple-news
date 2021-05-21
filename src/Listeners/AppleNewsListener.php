@@ -22,7 +22,16 @@ abstract class AppleNewsListener
         return true;
     }
 
-    protected function shouldCreateAndPublishArticle(Entry $entry): bool
+    protected function shouldCreateArticle(Entry $entry): bool
+    {
+        if (! $this->isPublishableCollection($entry->collectionHandle())) {
+            return false;
+        }
+
+        return true;
+    }
+
+    protected function shouldPublishArticle(Entry $entry): bool
     {
         if (! $this->isPublishableCollection($entry->collectionHandle())) {
             return false;
