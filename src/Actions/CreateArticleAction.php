@@ -16,9 +16,9 @@ class CreateArticleAction
         $id = $entry->slug();
         $collection = $entry->collectionHandle();
         $title = $entry->get('title');
-        $language = $entry->site()->shortLocale();
+        $locale = $entry->site()->shortLocale();
 
-        $article = (new Document($id, $title, $language, new Layout(7, 1024)))
+        $article = (new Document($id, $title, $locale, new Layout(7, 1024)))
             ->addComponent(new Body('body text'))
             ->addComponentTextStyle('default', new ComponentTextStyle())
             ->json();
