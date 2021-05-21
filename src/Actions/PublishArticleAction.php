@@ -2,8 +2,8 @@
 
 namespace Aerni\AppleNews\Actions;
 
-use Statamic\Entries\Entry;
 use Aerni\AppleNews\Facades\AppleNewsStorage;
+use Statamic\Entries\Entry;
 
 class PublishArticleAction
 {

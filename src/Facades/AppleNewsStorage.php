@@ -2,8 +2,8 @@
 
 namespace Aerni\AppleNews\Facades;
 
-use Illuminate\Support\Facades\Facade;
 use Aerni\AppleNews\Storage\AppleNewsStorage as Storage;
+use Illuminate\Support\Facades\Facade;
 
 class AppleNewsStorage extends Facade
 {

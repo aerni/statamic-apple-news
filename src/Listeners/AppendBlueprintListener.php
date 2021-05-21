@@ -2,8 +2,8 @@
 
 namespace Aerni\AppleNews\Listeners;
 
-use Statamic\Events\EntryBlueprintFound;
 use Aerni\AppleNews\Actions\AppendBlueprintAction;
+use Statamic\Events\EntryBlueprintFound;
 
 class AppendBlueprintListener extends AppleNewsListener
 {

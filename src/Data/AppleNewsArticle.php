@@ -2,12 +2,12 @@
 
 namespace Aerni\AppleNews\Data;
 
-use Statamic\Entries\Entry;
 use Aerni\AppleNews\Actions\CreateArticleAction;
 use Aerni\AppleNews\Actions\DeleteArticleAction;
 use Aerni\AppleNews\Actions\PublishArticleAction;
 use Aerni\AppleNews\Actions\UnpublishArticleAction;
 use Aerni\AppleNews\Contracts\AppleNewsArticleContract;
+use Statamic\Entries\Entry;
 
 class AppleNewsArticle implements AppleNewsArticleContract
 {

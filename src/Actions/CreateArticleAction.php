@@ -2,12 +2,12 @@
 
 namespace Aerni\AppleNews\Actions;
 
-use Statamic\Entries\Entry;
-use ChapterThree\AppleNewsAPI\Document;
 use Aerni\AppleNews\Facades\AppleNewsStorage;
-use ChapterThree\AppleNewsAPI\Document\Layouts\Layout;
+use ChapterThree\AppleNewsAPI\Document;
 use ChapterThree\AppleNewsAPI\Document\Components\Body;
+use ChapterThree\AppleNewsAPI\Document\Layouts\Layout;
 use ChapterThree\AppleNewsAPI\Document\Styles\ComponentTextStyle;
+use Statamic\Entries\Entry;
 
 class CreateArticleAction
 {
