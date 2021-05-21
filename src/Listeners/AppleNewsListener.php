@@ -2,10 +2,13 @@
 
 namespace Aerni\AppleNews\Listeners;
 
+use Aerni\AppleNews\Traits\Publishable;
 use Statamic\Entries\Entry;
 
 abstract class AppleNewsListener
 {
+    use Publishable;
+
     protected function shouldAppendBlueprint(?Entry $entry): bool
     {
         if (empty($entry)) {
@@ -56,17 +59,6 @@ abstract class AppleNewsListener
     protected function shouldDeleteArticle(Entry $entry): bool
     {
         if (! $this->isPublishableCollection($entry->collectionHandle())) {
-            return false;
-        }
-
-        return true;
-    }
-
-    protected function isPublishableCollection(string $handle): bool
-    {
-        $collections = config('apple-news.collections', []);
-
-        if (! in_array($handle, $collections)) {
             return false;
         }
 
