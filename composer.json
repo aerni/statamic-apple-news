@@ -20,14 +20,14 @@
     "require": {
         "php": "^7.4 | ^8.0",
         "chapter-three/apple-news-api": "^0.3.11",
-        "statamic/cms": "^3.0"
+        "spatie/laravel-ray": "^1.17",
+        "statamic/cms": "^3.1"
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^2.16",
-        "nunomaduro/collision": "^5.0",
-        "orchestra/testbench": "^6.0",
-        "phpunit/phpunit": "^9.0",
-        "spatie/laravel-ray": "^1.11"
+        "friendsofphp/php-cs-fixer": "^2.19",
+        "nunomaduro/collision": "^5.4",
+        "orchestra/testbench": "^6.17",
+        "phpunit/phpunit": "^9.5"
     },
     "autoload": {
         "psr-4": {
