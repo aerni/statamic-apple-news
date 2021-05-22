@@ -3,7 +3,6 @@
 namespace Aerni\AppleNews\Contracts;
 
 use Statamic\Contracts\Entries\Entry;
-use Aerni\AppleNews\Contracts\Article;
 
 interface Channel
 {

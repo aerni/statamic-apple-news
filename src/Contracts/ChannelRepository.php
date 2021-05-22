@@ -2,7 +2,6 @@
 
 namespace Aerni\AppleNews\Contracts;
 
-use Aerni\AppleNews\Contracts\Channel;
 use Illuminate\Support\Collection;
 
 interface ChannelRepository

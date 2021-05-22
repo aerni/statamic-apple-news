@@ -45,7 +45,7 @@ class ChannelRepository implements Contract
     {
         return collect(config('apple-news.channels'))->map(function ($channel, $key) {
             return resolve(Channel::class, [
-                'config' => array_merge($channel, ['handle' => $key])
+                'config' => array_merge($channel, ['handle' => $key]),
             ]);
         });
     }

@@ -49,7 +49,7 @@ class Article implements Contract
     public function components(): array
     {
         return [
-            new Body('body text')
+            new Body('body text'),
         ];
     }
 
