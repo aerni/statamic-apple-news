@@ -3,7 +3,7 @@
 namespace Aerni\AppleNews;
 
 use Aerni\AppleNews\Contracts\Article as Contract;
-use Aerni\AppleNews\Facades\AppleNewsStorage;
+use Aerni\AppleNews\Facades\Storage;
 use ChapterThree\AppleNewsAPI\Document;
 use ChapterThree\AppleNewsAPI\Document\Components\Body;
 use ChapterThree\AppleNewsAPI\Document\Layouts\Layout;
@@ -91,14 +91,14 @@ class Article implements Contract
 
     public function saveToFile(): self
     {
-        AppleNewsStorage::putArticle($this->collection(), $this->id(), $this->article());
+        Storage::put($this->collection(), $this->id(), $this->article());
 
         return $this;
     }
 
     public function deleteFile(): self
     {
-        AppleNewsStorage::deleteArticle($this->collection(), $this->id());
+        Storage::delete($this->collection(), $this->id());
 
         return $this;
     }

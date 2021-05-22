@@ -1,26 +1,27 @@
 <?php
 
-namespace Aerni\AppleNews\Storage;
+namespace Aerni\AppleNews;
 
+use Aerni\AppleNews\Contracts\Storage as Contract;
 use Statamic\Facades\File;
 
-class AppleNewsStorage implements Storage
+class Storage implements Contract
 {
-    public static function getArticle(string $collection, string $id): string
+    public function get(string $collection, string $id): string
     {
         $path = storage_path("statamic/addons/apple-news/{$collection}/{$id}.json");
 
         return File::get($path);
     }
 
-    public static function putArticle(string $collection, string $id, string $article): void
+    public function put(string $collection, string $id, string $article): void
     {
         $path = storage_path("statamic/addons/apple-news/{$collection}/{$id}.json");
 
         File::put($path, $article);
     }
 
-    public static function deleteArticle(string $collection, string $id): void
+    public function delete(string $collection, string $id): void
     {
         $path = storage_path("statamic/addons/apple-news/{$collection}/{$id}.json");
 
