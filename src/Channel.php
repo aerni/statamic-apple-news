@@ -67,6 +67,6 @@ class Channel implements Contract
 
     public function createArticle(Entry $entry): Article
     {
-        return resolve($this->article(), [$entry]);
+        return resolve($this->article())->from($entry);
     }
 }
