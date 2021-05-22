@@ -13,7 +13,7 @@ class Channel implements Contract
     private string $key;
     private string $secret;
     private string $collection;
-    private string $layout;
+    private string $article;
 
     public function __construct(array $config)
     {
@@ -22,7 +22,7 @@ class Channel implements Contract
         $this->key = $config['key'];
         $this->secret = $config['secret'];
         $this->collection = $config['collection'];
-        $this->layout = $config['layout'];
+        $this->article = $config['article'];
     }
 
     public function handle(): string
@@ -50,9 +50,9 @@ class Channel implements Contract
         return $this->collection;
     }
 
-    public function layout(): string
+    public function article(): string
     {
-        return $this->layout;
+        return $this->article;
     }
 
     public function matchEntry(Entry $entry): bool
@@ -67,6 +67,6 @@ class Channel implements Contract
 
     public function createArticle(Entry $entry): Article
     {
-        return resolve($this->layout(), [$entry]);
+        return resolve($this->article(), [$entry]);
     }
 }

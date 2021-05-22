@@ -33,9 +33,9 @@ interface Channel
     public function collection(): string;
 
     /**
-     * Get the channel layout.
+     * Get the channel article.
      */
-    public function layout(): string;
+    public function article(): string;
 
     /**
      * Determines whether a given entry should be included in the News channel.
