@@ -52,6 +52,11 @@ class ServiceProvider extends AddonServiceProvider
             \Aerni\AppleNews\Storage::class
         );
 
+        $this->app->singleton(
+            \Aerni\AppleNews\Contracts\Api::class,
+            \Aerni\AppleNews\Api::class
+        );
+
         return $this;
     }
 }
