@@ -2,6 +2,7 @@
 
 namespace Aerni\AppleNews;
 
+use Statamic\Statamic;
 use Statamic\Providers\AddonServiceProvider;
 
 class ServiceProvider extends AddonServiceProvider
@@ -19,4 +20,28 @@ class ServiceProvider extends AddonServiceProvider
             'Aerni\AppleNews\Listeners\UnpublishArticleListener',
         ],
     ];
+
+    public function boot()
+    {
+        parent::boot();
+
+        Statamic::booted(function () {
+            $this->bindContracts();
+        });
+    }
+
+    protected function bindContracts()
+    {
+        $this->app->singleton(
+            \Aerni\AppleNews\Contracts\ChannelRepository::class,
+            \Aerni\AppleNews\ChannelRepository::class
+        );
+
+        $this->app->singleton(
+            \Aerni\AppleNews\Contracts\Channel::class,
+            \Aerni\AppleNews\Channel::class
+        );
+
+        return $this;
+    }
 }

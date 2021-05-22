@@ -2,8 +2,10 @@
 
 return [
 
-    'collections' => [
+    'channels' => [
+
         //
+
     ],
 
 ];
