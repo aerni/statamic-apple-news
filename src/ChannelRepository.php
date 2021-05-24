@@ -44,7 +44,7 @@ class ChannelRepository implements Contract
     private function hydrate(): Collection
     {
         return collect(config('apple-news.channels'))->map(function ($channel, $key) {
-            return resolve(Channel::class, [
+            return resolve($channel['driver'], [
                 'config' => array_merge($channel, ['handle' => $key]),
             ]);
         });
