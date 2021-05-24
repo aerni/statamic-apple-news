@@ -80,7 +80,7 @@ class Api implements Contract
     /**
      * Delete an article.
      */
-    public function deleteArticle(string $channelId, string $articleId): stdClass
+    public function deleteArticle(string $channelId, string $articleId): string
     {
         return $this->delete($channelId, '/articles/{article_id}', [
             'article_id' => $articleId,

@@ -20,5 +20,5 @@ interface Api
 
     public function updateArticle(string $channelId, string $articleId, array $data): stdClass;
 
-    public function deleteArticle(string $channelId, string $articleId): stdClass;
+    public function deleteArticle(string $channelId, string $articleId): string;
 }

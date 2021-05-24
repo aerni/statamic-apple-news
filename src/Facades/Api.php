@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static stdClass search(string $channelId, array $params = [])
  * @method static stdClass createArticle(string $channelId, array $data)
  * @method static stdClass updateArticle(string $channelId, string $articleId, array $data)
- * @method static stdClass deleteArticle(string $channelId, string $articleId)
+ * @method static string deleteArticle(string $channelId, string $articleId)
  *
  * @see \Aerni\AppleNews\Api
  */
