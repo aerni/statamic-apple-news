@@ -2,8 +2,8 @@
 
 namespace Aerni\AppleNews;
 
-use Aerni\AppleNews\Contracts\Article;
 use Aerni\AppleNews\Contracts\Channel;
+use ChapterThree\AppleNewsAPI\Document;
 use Statamic\Contracts\Entries\Entry;
 
 abstract class BaseChannel implements Channel
@@ -51,5 +51,5 @@ abstract class BaseChannel implements Channel
         return $entry->published();
     }
 
-    abstract public function createArticle(Entry $entry): Article;
+    abstract public function createArticle(Entry $entry): Document;
 }

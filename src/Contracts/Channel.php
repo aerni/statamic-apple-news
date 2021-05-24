@@ -2,6 +2,7 @@
 
 namespace Aerni\AppleNews\Contracts;
 
+use ChapterThree\AppleNewsAPI\Document;
 use Statamic\Contracts\Entries\Entry;
 
 interface Channel
@@ -39,5 +40,5 @@ interface Channel
     /**
      * Creates an article for the given entry.
      */
-    public function createArticle(Entry $entry): Article;
+    public function createArticle(Entry $entry): Document;
 }
