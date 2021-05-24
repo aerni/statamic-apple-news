@@ -27,16 +27,6 @@ interface Channel
     public function secret(): string;
 
     /**
-     * Get the channel collection.
-     */
-    public function collection(): string;
-
-    /**
-     * Get the channel article.
-     */
-    public function article(): string;
-
-    /**
      * Determines whether a given entry should be included in the News channel.
      */
     public function matchEntry(Entry $entry): bool;
