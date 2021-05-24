@@ -2,14 +2,14 @@
 
 namespace Aerni\AppleNews;
 
+use Aerni\AppleNews\Contracts\Article;
+use Aerni\AppleNews\Contracts\ArticleManager as Contract;
 use Aerni\AppleNews\Facades\Api;
-use Illuminate\Support\Collection;
+use Aerni\AppleNews\Facades\ArticleRecord;
 use Aerni\AppleNews\Facades\Channel;
 use Aerni\AppleNews\Facades\Storage;
+use Illuminate\Support\Collection;
 use Statamic\Contracts\Entries\Entry;
-use Aerni\AppleNews\Contracts\Article;
-use Aerni\AppleNews\Facades\ArticleRecord;
-use Aerni\AppleNews\Contracts\ArticleManager as Contract;
 
 class ArticleManager implements Contract
 {
@@ -68,7 +68,7 @@ class ArticleManager implements Contract
         $data = [
             'files' => [], // TODO: Support file attachments
             'metadata' => ! empty($metadata) ? json_encode(['data' => $metadata]) : null,
-            'json' => $article->json()
+            'json' => $article->json(),
         ];
 
         // Create or update the Apple News article.

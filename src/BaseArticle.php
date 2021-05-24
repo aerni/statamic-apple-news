@@ -4,11 +4,11 @@ namespace Aerni\AppleNews;
 
 use Aerni\AppleNews\Contracts\Article;
 use ChapterThree\AppleNewsAPI\Document;
-use ChapterThree\AppleNewsAPI\Document\Metadata;
 use ChapterThree\AppleNewsAPI\Document\Layouts\Layout;
-use Statamic\Statamic;
-use Statamic\Facades\Addon;
+use ChapterThree\AppleNewsAPI\Document\Metadata;
 use Statamic\Contracts\Entries\Entry;
+use Statamic\Facades\Addon;
+use Statamic\Statamic;
 
 abstract class BaseArticle implements Article
 {
