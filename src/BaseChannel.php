@@ -2,9 +2,9 @@
 
 namespace Aerni\AppleNews;
 
-use Statamic\Contracts\Entries\Entry;
 use Aerni\AppleNews\Contracts\Channel;
 use ChapterThree\AppleNewsAPI\Document;
+use Statamic\Contracts\Entries\Entry;
 
 abstract class BaseChannel implements Channel
 {
