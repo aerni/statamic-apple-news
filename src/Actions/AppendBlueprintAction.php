@@ -7,12 +7,11 @@ use Statamic\Fields\Blueprint;
 
 class AppendBlueprintAction
 {
-    public function execute(Blueprint $blueprint): void
+    public static function execute(Blueprint $blueprint): void
     {
         $contents = $blueprint->contents();
 
-        $appleNewsBlueprint = AppleNewsBlueprint::make();
-        $appleNewsBlueprintFields = $appleNewsBlueprint->contents()['sections']['main'];
+        $appleNewsBlueprintFields = AppleNewsBlueprint::make()->contents()['sections']['main'];
 
         $contents['sections']['Apple News'] = $appleNewsBlueprintFields;
 
