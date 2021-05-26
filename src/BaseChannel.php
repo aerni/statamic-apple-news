@@ -2,9 +2,9 @@
 
 namespace Aerni\AppleNews;
 
+use Statamic\Contracts\Entries\Entry;
 use Aerni\AppleNews\Contracts\Channel;
 use ChapterThree\AppleNewsAPI\Document;
-use Statamic\Contracts\Entries\Entry;
 
 abstract class BaseChannel implements Channel
 {
@@ -41,15 +41,17 @@ abstract class BaseChannel implements Channel
         return $this->secret;
     }
 
-    public function matchEntry(Entry $entry): bool
-    {
-        return true;
-    }
-
     public function canPublish(Entry $entry): bool
     {
         return $entry->published();
     }
 
-    abstract public function createArticle(Entry $entry): Document;
+    public function createArticle(Entry $entry, string $template): Document
+    {
+        return resolve($template)->from($entry);
+    }
+
+    abstract public function matchEntry(Entry $entry): bool;
+
+    abstract public function templates(): array;
 }

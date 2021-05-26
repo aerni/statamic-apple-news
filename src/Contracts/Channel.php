@@ -40,5 +40,10 @@ interface Channel
     /**
      * Creates an article for the given entry.
      */
-    public function createArticle(Entry $entry): Document;
+    public function createArticle(Entry $entry, string $template): Document;
+
+    /**
+     * Get an array of article templates for this channel.
+     */
+    public function templates(): array;
 }
