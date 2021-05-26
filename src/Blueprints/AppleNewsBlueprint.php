@@ -2,10 +2,11 @@
 
 namespace Aerni\AppleNews\Blueprints;
 
+use Aerni\AppleNews\Contracts\Blueprint as Contract;
 use Statamic\Facades\Blueprint;
 use Statamic\Fields\Blueprint as BlueprintFields;
 
-class AppleNewsBlueprint
+class AppleNewsBlueprint implements Contract
 {
     public static function make(): BlueprintFields
     {
