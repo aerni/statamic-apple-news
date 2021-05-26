@@ -6,9 +6,9 @@ use Aerni\AppleNews\Contracts\Article as Contract;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @method static \Aerni\AppleNews\Contracts\Article from()
+ * @method static \ChapterThree\AppleNewsAPI\Document from(Entry $entry)
  *
- * @see \Aerni\AppleNews\Article
+ * @see \Aerni\AppleNews\BaseArticle
  */
 class Article extends Facade
 {
