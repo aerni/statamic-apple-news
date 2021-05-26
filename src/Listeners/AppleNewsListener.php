@@ -2,8 +2,9 @@
 
 namespace Aerni\AppleNews\Listeners;
 
-use Aerni\AppleNews\Traits\Publishable;
 use Statamic\Entries\Entry;
+use Aerni\AppleNews\Traits\Publishable;
+use Aerni\AppleNews\Facades\ArticleManager;
 
 abstract class AppleNewsListener
 {
@@ -15,7 +16,7 @@ abstract class AppleNewsListener
             return false;
         }
 
-        if (! $this->isPublishableCollection($entry->collectionHandle())) {
+        if (! ArticleManager::publishable($entry)) {
             return false;
         }
 
@@ -24,7 +25,7 @@ abstract class AppleNewsListener
 
     protected function shouldCreateArticle(Entry $entry): bool
     {
-        if (! $this->isPublishableCollection($entry->collectionHandle())) {
+        if (! ArticleManager::publishable($entry)) {
             return false;
         }
 
@@ -33,7 +34,7 @@ abstract class AppleNewsListener
 
     protected function shouldPublishArticle(Entry $entry): bool
     {
-        if (! $this->isPublishableCollection($entry->collectionHandle())) {
+        if (! ArticleManager::publishable($entry)) {
             return false;
         }
 
@@ -50,7 +51,7 @@ abstract class AppleNewsListener
 
     protected function shouldUnpublishArticle(Entry $entry): bool
     {
-        if (! $this->isPublishableCollection($entry->collectionHandle())) {
+        if (! ArticleManager::publishable($entry)) {
             return false;
         }
 
@@ -67,7 +68,7 @@ abstract class AppleNewsListener
 
     protected function shouldDeleteArticle(Entry $entry): bool
     {
-        if (! $this->isPublishableCollection($entry->collectionHandle())) {
+        if (! ArticleManager::publishable($entry)) {
             return false;
         }
 
