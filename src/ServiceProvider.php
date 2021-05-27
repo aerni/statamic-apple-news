@@ -9,15 +9,13 @@ class ServiceProvider extends AddonServiceProvider
 {
     protected $listen = [
         'Statamic\Events\EntryBlueprintFound' => [
-            'Aerni\AppleNews\Listeners\AppendBlueprintListener',
+            'Aerni\AppleNews\Listeners\AppendEntryBlueprint',
         ],
         'Statamic\Events\EntryDeleted' => [
-            'Aerni\AppleNews\Listeners\DeleteArticleListener',
+            'Aerni\AppleNews\Listeners\DeleteArticle',
         ],
         'Statamic\Events\EntrySaving' => [
-            'Aerni\AppleNews\Listeners\CreateArticleListener',
-            'Aerni\AppleNews\Listeners\PublishArticleListener',
-            'Aerni\AppleNews\Listeners\UnpublishArticleListener',
+            'Aerni\AppleNews\Listeners\PublishArticle',
         ],
     ];
 
@@ -33,11 +31,6 @@ class ServiceProvider extends AddonServiceProvider
     protected function bindContracts()
     {
         $this->app->singleton(
-            \Aerni\AppleNews\Contracts\ChannelRepository::class,
-            \Aerni\AppleNews\ChannelRepository::class
-        );
-
-        $this->app->singleton(
             \Aerni\AppleNews\Contracts\Channel::class,
             \Aerni\AppleNews\Channel::class
         );
@@ -45,6 +38,11 @@ class ServiceProvider extends AddonServiceProvider
         $this->app->singleton(
             \Aerni\AppleNews\Contracts\Article::class,
             \Aerni\AppleNews\Article::class
+        );
+
+        $this->app->singleton(
+            \Aerni\AppleNews\Contracts\ArticleRepository::class,
+            \Aerni\AppleNews\ArticleRepository::class
         );
 
         $this->app->singleton(
@@ -65,6 +63,16 @@ class ServiceProvider extends AddonServiceProvider
         $this->app->singleton(
             \Aerni\AppleNews\Contracts\Api::class,
             \Aerni\AppleNews\Api::class
+        );
+
+        $this->app->singleton(
+            \Aerni\AppleNews\Contracts\Template::class,
+            \Aerni\AppleNews\Template::class
+        );
+
+        $this->app->singleton(
+            \Aerni\AppleNews\Contracts\TemplateRepository::class,
+            \Aerni\AppleNews\TemplateRepository::class
         );
 
         return $this;

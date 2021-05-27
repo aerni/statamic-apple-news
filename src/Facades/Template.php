@@ -2,13 +2,13 @@
 
 namespace Aerni\AppleNews\Facades;
 
-use Aerni\AppleNews\Storage\AppleNewsStorage as Storage;
+use Aerni\AppleNews\Contracts\TemplateRepository;
 use Illuminate\Support\Facades\Facade;
 
-class AppleNewsStorage extends Facade
+class Template extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return Storage::class;
+        return TemplateRepository::class;
     }
 }

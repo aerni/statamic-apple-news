@@ -10,114 +10,112 @@ use stdClass;
 class Api implements Contract
 {
     /**
-     * Get information about a channel.
+     * Get information about the channel.
      */
-    public function channel($channelId): stdClass
+    public function channel(): stdClass
     {
-        return $this->get($channelId, '/channels/{channel_id}', [
-            'channel_id' => $channelId,
+        return $this->get('/channels/{channel_id}', [
+            'channel_id' => Channel::id(),
         ]);
     }
 
     /**
-     * Get information about a channel’s sections.
+     * Get information about the channel’s sections.
      */
-    public function sections(string $channelId): stdClass
+    public function sections(): stdClass
     {
-        return $this->get($channelId, '/channels/{channel_id}/sections', [
-            'channel_id' => $channelId,
+        return $this->get('/channels/{channel_id}/sections', [
+            'channel_id' => Channel::id(),
         ]);
     }
 
     /**
-     * Get information about a section.
+     * Get information about a specific section.
      */
-    public function section(string $channelId, string $sectionId): stdClass
+    public function section(string $id): stdClass
     {
-        return $this->get($channelId, '/sections/{section_id}', [
-            'section_id' => $sectionId,
+        return $this->get('/sections/{section_id}', [
+            'section_id' => $id,
         ]);
     }
 
     /**
      * Get information about an article.
      */
-    public function article(string $channelId, string $articleId): stdClass
+    public function article(string $id): stdClass
     {
-        return $this->get($channelId, '/articles/{article_id}', ['article_id' => $articleId]);
+        return $this->get('/articles/{article_id}', ['article_id' => $id]);
     }
 
     /**
-     * Search for articles in a channel.
+     * Search for articles in the channel.
      */
-    public function search(string $channelId, array $params = []): stdClass
+    public function search(array $params = []): stdClass
     {
-        return $this->get($channelId, '/channels/{channel_id}/articles', [
-            'channel_id' => $channelId,
+        return $this->get('/channels/{channel_id}/articles', [
+            'channel_id' => Channel::id(),
         ], $params);
     }
 
     /**
      * Create a new article.
      */
-    public function createArticle(string $channelId, array $data): stdClass
+    public function createArticle(array $data): stdClass
     {
-        return $this->post($channelId, '/channels/{channel_id}/articles', [
-            'channel_id' => $channelId,
+        return $this->post('/channels/{channel_id}/articles', [
+            'channel_id' => Channel::id(),
         ], $data);
     }
 
     /**
      * Update an article.
      */
-    public function updateArticle(string $channelId, string $articleId, array $data): stdClass
+    public function updateArticle(string $id, array $data): stdClass
     {
-        return $this->post($channelId, '/articles/{article_id}', [
-            'article_id' => $articleId,
+        return $this->post('/articles/{article_id}', [
+            'article_id' => $id,
         ], $data);
     }
 
     /**
      * Delete an article.
      */
-    public function deleteArticle(string $channelId, string $articleId): string
+    public function deleteArticle(string $id): string
     {
-        return $this->delete($channelId, '/articles/{article_id}', [
-            'article_id' => $articleId,
+        return $this->delete('/articles/{article_id}', [
+            'article_id' => $id,
         ]);
     }
 
     /**
      * Send a GET request to the Apple News API.
      */
-    protected function get(string $channelId, string $path, array $pathArgs = [], array $data = [])
+    protected function get(string $path, array $pathArgs = [], array $data = [])
     {
-        return $this->api($channelId)->get($path, $pathArgs, $data);
+        return $this->api()->get($path, $pathArgs, $data);
     }
 
     /**
      * Send a POST request to the Apple News API.
      */
-    protected function post(string $channelId, string $path, array $pathArgs = [], array $data = [])
+    protected function post(string $path, array $pathArgs = [], array $data = [])
     {
-        return $this->api($channelId)->post($path, $pathArgs, $data);
+        return $this->api()->post($path, $pathArgs, $data);
     }
 
     /**
      * Send a DELETE request to the Apple News API.
      */
-    protected function delete(string $channelId, string $path, array $pathArgs = [], array $data = [])
+    protected function delete(string $path, array $pathArgs = [], array $data = [])
     {
-        return $this->api($channelId)->delete($path, $pathArgs, $data);
+        return $this->api()->delete($path, $pathArgs, $data);
     }
 
     /**
      * Returns a publisher API configured for a given channel.
      */
-    protected function api(string $channelId): PublisherAPI
+    protected function api(): PublisherAPI
     {
-        $channel = Channel::find($channelId);
-
-        return new PublisherAPI($channel->key(), $channel->secret(), 'https://news-api.apple.com');
+        return new PublisherAPI(Channel::key(), Channel::secret(), 'https://news-api.apple.com');
     }
 }

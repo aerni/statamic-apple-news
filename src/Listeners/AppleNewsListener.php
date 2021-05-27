@@ -3,13 +3,10 @@
 namespace Aerni\AppleNews\Listeners;
 
 use Statamic\Entries\Entry;
-use Aerni\AppleNews\Traits\Publishable;
 use Aerni\AppleNews\Facades\ArticleManager;
 
-abstract class AppleNewsListener
+class AppleNewsListener
 {
-    use Publishable;
-
     protected function shouldAppendBlueprint(?Entry $entry): bool
     {
         if (empty($entry)) {

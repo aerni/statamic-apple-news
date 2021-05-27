@@ -5,12 +5,12 @@ namespace Aerni\AppleNews\Listeners;
 use Aerni\AppleNews\Facades\AppleNewsArticle;
 use Statamic\Events\EntrySaving;
 
-class PublishArticleListener extends AppleNewsListener
+class PublishArticle extends AppleNewsListener
 {
     public function handle(EntrySaving $event): void
     {
-        if ($this->shouldPublishArticle($event->entry)) {
-            AppleNewsArticle::publish($event->entry);
-        }
+        // if ($this->shouldPublishArticle($event->entry)) {
+        //     AppleNewsArticle::publish($event->entry);
+        // }
     }
 }

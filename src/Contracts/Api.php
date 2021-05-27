@@ -6,19 +6,43 @@ use stdClass;
 
 interface Api
 {
-    public function channel($channelId): stdClass;
+    /**
+     * Get information about the channel.
+     */
+    public function channel(): stdClass;
 
-    public function sections(string $channelId): stdClass;
+    /**
+     * Get information about the channel’s sections.
+     */
+    public function sections(): stdClass;
 
-    public function section(string $channelId, string $sectionId): stdClass;
+    /**
+     * Get information about a specific section.
+     */
+    public function section(string $id): stdClass;
 
-    public function article(string $channelId, string $articleId): stdClass;
+    /**
+     * Get information about an article.
+     */
+    public function article(string $id): stdClass;
 
-    public function search(string $channelId, array $params = []): stdClass;
+    /**
+     * Search for articles in the channel.
+     */
+    public function search(array $params = []): stdClass;
 
-    public function createArticle(string $channelId, array $data): stdClass;
+    /**
+     * Create a new article.
+     */
+    public function createArticle(array $data): stdClass;
 
-    public function updateArticle(string $channelId, string $articleId, array $data): stdClass;
+    /**
+     * Update an article.
+     */
+    public function updateArticle(string $id, array $data): stdClass;
 
-    public function deleteArticle(string $channelId, string $articleId): string;
+    /**
+     * Delete an article.
+     */
+    public function deleteArticle(string $id): string;
 }

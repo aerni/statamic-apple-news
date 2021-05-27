@@ -2,16 +2,8 @@
 
 namespace Aerni\AppleNews\Contracts;
 
-use ChapterThree\AppleNewsAPI\Document;
-use Statamic\Contracts\Entries\Entry;
-
 interface Channel
 {
-    /**
-     * Get the channel handle.
-     */
-    public function handle(): string;
-
     /**
      * Get the channel ID.
      */
@@ -28,22 +20,12 @@ interface Channel
     public function secret(): string;
 
     /**
-     * Determines whether a given entry should be included in the News channel.
+     * Get the collections supported by this channel.
      */
-    public function matchEntry(Entry $entry): bool;
+    public function collections(): array;
 
     /**
-     * Determines whether a given entry should be published to Apple News in its current state.
-     */
-    public function canPublish(Entry $entry): bool;
-
-    /**
-     * Creates an article for the given entry.
-     */
-    public function createArticle(Entry $entry, string $template): Document;
-
-    /**
-     * Get an array of article templates for this channel.
+     * Get the article templates of this channel.
      */
     public function templates(): array;
 }

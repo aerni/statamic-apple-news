@@ -7,9 +7,9 @@ use Statamic\Contracts\Entries\Entry;
 
 interface ArticleManager
 {
-    public function getArticleInfo(Entry $entry, string $channelId, bool $refresh = false): array;
+    public function getArticleInfo(Entry $entry, bool $refresh = false): array;
 
-    public function publish(Entry $entry, string $channelId): bool;
+    public function publish(Entry $entry, string $template): bool;
 
     public function delete(Entry $entry): bool;
 
@@ -17,9 +17,5 @@ interface ArticleManager
 
     public function deleteFile(Article $article): self;
 
-    public function publishableChannels(Entry $entry): Collection;
-
-    public function publishable(Entry $entry): bool;
-
-    public function publishableTo(Entry $entry, string $channelId): bool;
+    public function isPublishable(Entry $entry): bool;
 }
