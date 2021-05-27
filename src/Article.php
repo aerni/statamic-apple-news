@@ -5,7 +5,6 @@ namespace Aerni\AppleNews;
 use Aerni\AppleNews\Contracts\Article as Contract;
 use Aerni\AppleNews\Contracts\Template;
 use Aerni\AppleNews\Facades\Api;
-use Aerni\AppleNews\Facades\ArticleRecord;
 use Aerni\AppleNews\Facades\Storage;
 use Aerni\AppleNews\Facades\Template as TemplateRepository;
 use ChapterThree\AppleNewsAPI\Document;

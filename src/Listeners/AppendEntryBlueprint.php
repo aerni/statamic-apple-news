@@ -2,11 +2,10 @@
 
 namespace Aerni\AppleNews\Listeners;
 
-use Aerni\AppleNews\Facades\Article;
+use Aerni\AppleNews\Blueprints\EntryBlueprint;
 use Aerni\AppleNews\Facades\Channel;
 use Statamic\Contracts\Entries\Entry;
 use Statamic\Events\EntryBlueprintFound;
-use Aerni\AppleNews\Blueprints\EntryBlueprint;
 
 class AppendEntryBlueprint
 {
