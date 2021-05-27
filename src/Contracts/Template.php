@@ -2,8 +2,8 @@
 
 namespace Aerni\AppleNews\Contracts;
 
-use ChapterThree\AppleNewsAPI\Document\Metadata;
 use ChapterThree\AppleNewsAPI\Document\Layouts\Layout;
+use ChapterThree\AppleNewsAPI\Document\Metadata;
 
 interface Template
 {

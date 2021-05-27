@@ -2,9 +2,9 @@
 
 namespace Aerni\AppleNews\Blueprints;
 
-use Statamic\Facades\Blueprint;
-use Aerni\AppleNews\Facades\Template;
 use Aerni\AppleNews\Contracts\AppleNewsBlueprint;
+use Aerni\AppleNews\Facades\Template;
+use Statamic\Facades\Blueprint;
 use Statamic\Fields\Blueprint as StatamicBlueprint;
 
 class EntryBlueprint implements AppleNewsBlueprint

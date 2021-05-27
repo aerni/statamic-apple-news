@@ -2,8 +2,6 @@
 
 namespace Aerni\AppleNews\Contracts;
 
-use Aerni\AppleNews\Contracts\Template;
-
 interface TemplateRepository
 {
     public function all(): array;

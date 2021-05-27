@@ -2,8 +2,8 @@
 
 namespace Aerni\AppleNews\Listeners;
 
-use Statamic\Entries\Entry;
 use Aerni\AppleNews\Facades\ArticleManager;
+use Statamic\Entries\Entry;
 
 class AppleNewsListener
 {

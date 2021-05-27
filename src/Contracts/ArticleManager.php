@@ -2,7 +2,6 @@
 
 namespace Aerni\AppleNews\Contracts;
 
-use Illuminate\Support\Collection;
 use Statamic\Contracts\Entries\Entry;
 
 interface ArticleManager

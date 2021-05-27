@@ -2,8 +2,6 @@
 
 namespace Aerni\AppleNews\Contracts;
 
-use Aerni\AppleNews\Contracts\Article;
-use Aerni\AppleNews\Contracts\Template;
 use Statamic\Contracts\Entries\Entry;
 
 interface ArticleRepository

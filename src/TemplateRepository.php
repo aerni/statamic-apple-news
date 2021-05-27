@@ -4,8 +4,8 @@ namespace Aerni\AppleNews;
 
 use Aerni\AppleNews\Contracts\Template;
 use Aerni\AppleNews\Contracts\TemplateRepository as Contract;
-use Illuminate\Support\Str;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Str;
 
 class TemplateRepository implements Contract
 {

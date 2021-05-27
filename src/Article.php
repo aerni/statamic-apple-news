@@ -2,16 +2,15 @@
 
 namespace Aerni\AppleNews;
 
-use Statamic\Statamic;
-use Statamic\Facades\Addon;
-use Aerni\AppleNews\Facades\Api;
-use Aerni\AppleNews\Facades\Channel;
-use Aerni\AppleNews\Facades\Storage;
-use Statamic\Contracts\Entries\Entry;
-use Aerni\AppleNews\Contracts\Template;
-use ChapterThree\AppleNewsAPI\Document;
-use Aerni\AppleNews\Facades\ArticleRecord;
 use Aerni\AppleNews\Contracts\Article as Contract;
+use Aerni\AppleNews\Contracts\Template;
+use Aerni\AppleNews\Facades\Api;
+use Aerni\AppleNews\Facades\ArticleRecord;
+use Aerni\AppleNews\Facades\Storage;
+use ChapterThree\AppleNewsAPI\Document;
+use Statamic\Contracts\Entries\Entry;
+use Statamic\Facades\Addon;
+use Statamic\Statamic;
 
 class Article implements Contract
 {
