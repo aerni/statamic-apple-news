@@ -6,7 +6,9 @@ use Statamic\Contracts\Entries\Entry;
 
 interface ArticleRepository
 {
-    public function make(Entry $entry, Template $template): Article;
+    public function make(Entry $entry): Article;
 
-    public function publishable(Entry $entry): bool;
+    public function publish(Entry $entry): bool;
+
+    public function delete(Entry $entry): bool;
 }

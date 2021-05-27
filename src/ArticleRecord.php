@@ -20,6 +20,9 @@ class ArticleRecord implements Contract
 
     public function delete(Entry $entry): bool
     {
-        return $entry->remove('apple_news')->save();
+        return $entry
+            ->remove('apple_news_published')
+            ->remove('apple_news_template')
+            ->save();
     }
 }

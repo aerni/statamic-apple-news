@@ -7,6 +7,7 @@ use Aerni\AppleNews\Contracts\Template;
 use Aerni\AppleNews\Facades\Api;
 use Aerni\AppleNews\Facades\ArticleRecord;
 use Aerni\AppleNews\Facades\Storage;
+use Aerni\AppleNews\Facades\Template as TemplateRepository;
 use ChapterThree\AppleNewsAPI\Document;
 use Statamic\Contracts\Entries\Entry;
 use Statamic\Facades\Addon;
@@ -19,10 +20,10 @@ class Article implements Contract
     protected Document $document;
 
 
-    public function __construct(Entry $entry, Template $template)
+    public function __construct(Entry $entry)
     {
         $this->entry = $entry;
-        $this->template = $template;
+        $this->template = $this->template();
         $this->document = $this->document();
     }
 
@@ -39,11 +40,9 @@ class Article implements Contract
      */
     public function publish(): bool
     {
-        $articleRecord = ArticleRecord::get($this->entry);
-
         // Add the latest revision ID if we have one.
-        if ($articleRecord->has('revision_id')) {
-            $metadata['revision'] = $articleRecord->get('revision_id');
+        if ($revision = $this->entry->get('apple_news_revision_id')) {
+            $metadata['revision'] = $revision;
         }
 
         // Prepare the data and send the request.
@@ -54,8 +53,8 @@ class Article implements Contract
         ];
 
         // Create or update the Apple News article.
-        $response = $articleRecord->has('article_id')
-            ? Api::updateArticle($articleRecord->get('article_id'), $data)
+        $response = $this->entry->has('apple_news_article_id')
+            ? Api::updateArticle($this->entry->get('apple_news_article_id'), $data)
             : Api::createArticle($data);
 
         // Update the article record on the Statamic entry.
@@ -73,12 +72,9 @@ class Article implements Contract
      */
     public function delete(): bool
     {
-        $articleRecord = ArticleRecord::get($this->entry);
+        Api::deleteArticle($this->entry->get('apple_news_article_id'));
 
-        $articleId = $articleRecord->get('article_id');
-
-        Api::deleteArticle($articleId);
-        ArticleRecord::delete($this->entry);
+        $this->updateArticleRecord();
 
         return true;
     }
@@ -100,16 +96,21 @@ class Article implements Contract
     /**
      * Updates the article record of a given entry with the data of the Apple News API response.
      */
-    private function updateArticleRecord(object $response): void
+    private function updateArticleRecord(object $response = null): void
     {
-        ArticleRecord::update($this->entry, [
-            'article_id' => $response->data->id,
-            'revision_id' => $response->data->revision,
-            'is_sponsored' => $response->data->isSponsored,
-            'is_preview' => $response->data->isPreview,
-            'state' => $response->data->state,
-            'share_url' => $response->data->shareUrl,
+        $this->entry->merge([
+            'apple_news_article_id' => $response->data->id ?? null,
+            'apple_news_revision_id' => $response->data->revision ?? null,
+            'apple_news_is_sponsored' => $response->data->isSponsored ?? null,
+            'apple_news_is_preview' => $response->data->isPreview ?? null,
+            'apple_news_state' => $response->data->state ?? null,
+            'apple_news_share_url' => $response->data->shareUrl ?? null,
         ]);
+    }
+
+    private function template(): Template
+    {
+        return TemplateRepository::find($this->entry->get('apple_news_template'));
     }
 
     private function document(): Document

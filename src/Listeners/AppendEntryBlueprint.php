@@ -2,15 +2,21 @@
 
 namespace Aerni\AppleNews\Listeners;
 
-use Aerni\AppleNews\Blueprints\EntryBlueprint;
 use Aerni\AppleNews\Facades\Article;
+use Aerni\AppleNews\Facades\Channel;
 use Statamic\Contracts\Entries\Entry;
 use Statamic\Events\EntryBlueprintFound;
+use Aerni\AppleNews\Blueprints\EntryBlueprint;
 
 class AppendEntryBlueprint
 {
     public function handle(EntryBlueprintFound $event): void
     {
+        // The entry will be 'null' before it has been saved the first time. Return to not cause any issues.
+        if (! $event->entry) {
+            return;
+        }
+
         if ($this->shouldAppendBlueprint($event->entry)) {
             $contents = $event->blueprint->contents();
 
@@ -22,13 +28,9 @@ class AppendEntryBlueprint
         }
     }
 
-    protected function shouldAppendBlueprint(?Entry $entry): bool
+    protected function shouldAppendBlueprint(Entry $entry): bool
     {
-        if (empty($entry)) {
-            return false;
-        }
-
-        if (! Article::publishable($entry)) {
+        if (! in_array($entry->collectionHandle(), Channel::collections())) {
             return false;
         }
 
