@@ -2,9 +2,9 @@
 
 namespace Aerni\AppleNews\Listeners;
 
-use Statamic\Events\EntryDeleted;
 use Aerni\AppleNews\Facades\Article;
 use Statamic\Contracts\Entries\Entry;
+use Statamic\Events\EntryDeleted;
 
 class DeleteArticle
 {
