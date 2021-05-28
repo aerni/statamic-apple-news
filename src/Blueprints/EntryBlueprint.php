@@ -137,6 +137,18 @@ class EntryBlueprint implements AppleNewsBlueprint
                                 'width' => 50,
                             ],
                         ],
+                        [
+                            'handle' => 'apple_news_state',
+                            'field' => [
+                                'type' => 'text',
+                                'display' => 'Status',
+                                'instructions' => 'The status of this article',
+                                'icon' => 'text',
+                                'listable' => 'hidden',
+                                'read_only' => 'true',
+                                'width' => 50,
+                            ],
+                        ],
                     ],
                 ],
             ],

@@ -6,7 +6,7 @@ use Aerni\AppleNews\Facades\Article;
 use Statamic\Contracts\Entries\Entry;
 use Statamic\Events\EntryBlueprintFound;
 
-class UpdateArticleStatus
+class UpdateArticleState
 {
     public function handle(EntryBlueprintFound $event): void
     {
@@ -15,14 +15,16 @@ class UpdateArticleStatus
             return;
         }
 
-        if ($this->shouldUpdateArticleStatus($event->entry)) {
-            //
+        if ($this->shouldUpdateArticleState($event->entry)) {
+            Article::updateState($event->entry);
         }
     }
 
-    protected function shouldUpdateArticleStatus(Entry $entry): bool
+    protected function shouldUpdateArticleState(Entry $entry): bool
     {
-        // Update the article status if it is still processing and not live or any other state.
+        if (! $entry->get('apple_news_state')) {
+            return false;
+        }
 
         return true;
     }
