@@ -20,17 +20,7 @@ class EntryBlueprint implements AppleNewsBlueprint
                             'field' => [
                                 'type' => 'section',
                                 'display' => 'Apple News',
-                                'instructions' => 'Configure the publishing options for this entry.',
-                                'listable' => 'hidden',
-                            ],
-                        ],
-                        [
-                            'handle' => 'apple_news_published',
-                            'field' => [
-                                'type' => 'toggle',
-                                'display' => 'Published',
-                                'instructions' => 'Activate to publish on Apple News.',
-                                'icon' => 'toggle',
+                                'instructions' => 'Configure the publishing options for this article.',
                                 'listable' => 'hidden',
                             ],
                         ],
@@ -39,7 +29,7 @@ class EntryBlueprint implements AppleNewsBlueprint
                             'field' => [
                                 'type' => 'select',
                                 'display' => 'Template',
-                                'instructions' => 'Choose the template for this article.',
+                                'instructions' => 'Select the template for this article.',
                                 'options' => Template::toNameArray(),
                                 'default' => array_key_first(Template::toNameArray()),
                                 'icon' => 'select',
@@ -50,16 +40,18 @@ class EntryBlueprint implements AppleNewsBlueprint
                                 'taggable' => false,
                                 'push_tags' => false,
                                 'cast_booleans' => false,
+                                'width' => 50,
                             ],
                         ],
                         [
-                            'handle' => 'apple_news_is_hidden',
+                            'handle' => 'apple_news_published',
                             'field' => [
                                 'type' => 'toggle',
-                                'display' => 'Hidden',
-                                'instructions' => 'Activate to hide this article from Apple News feeds.',
+                                'display' => 'Published',
+                                'instructions' => 'Publish this article on Apple News.',
                                 'icon' => 'toggle',
                                 'listable' => 'hidden',
+                                'width' => 50,
                             ],
                         ],
                         [
@@ -67,10 +59,22 @@ class EntryBlueprint implements AppleNewsBlueprint
                             'field' => [
                                 'type' => 'toggle',
                                 'display' => 'Preview',
-                                'instructions' => 'Activate to make this article a preview that is only visible to members of your channel.',
+                                'instructions' => 'Preview this article before it\'s visible to the public.',
                                 'icon' => 'toggle',
                                 'listable' => 'hidden',
                                 'default' => 'true',
+                                'width' => 50,
+                            ],
+                        ],
+                        [
+                            'handle' => 'apple_news_is_hidden',
+                            'field' => [
+                                'type' => 'toggle',
+                                'display' => 'Hidden',
+                                'instructions' => 'Hide this article from Apple News feeds.',
+                                'icon' => 'toggle',
+                                'listable' => 'hidden',
+                                'width' => 50,
                             ],
                         ],
                         [
@@ -78,9 +82,10 @@ class EntryBlueprint implements AppleNewsBlueprint
                             'field' => [
                                 'type' => 'toggle',
                                 'display' => 'Featured',
-                                'instructions' => 'Activate to consider this article for featuring in Apple News.',
+                                'instructions' => 'Consider this article for featuring in Apple News.',
                                 'icon' => 'toggle',
                                 'listable' => 'hidden',
+                                'width' => 50,
                             ],
                         ],
                         [
@@ -88,9 +93,10 @@ class EntryBlueprint implements AppleNewsBlueprint
                             'field' => [
                                 'type' => 'toggle',
                                 'display' => 'Sponsored',
-                                'instructions' => 'Activate if this article consists of sponsored content for promotional purposes.',
+                                'instructions' => 'This article consists of sponsored content.',
                                 'icon' => 'toggle',
                                 'listable' => 'hidden',
+                                'width' => 50,
                             ],
                         ],
                         // [
@@ -114,7 +120,7 @@ class EntryBlueprint implements AppleNewsBlueprint
                             'field' => [
                                 'type' => 'select',
                                 'display' => 'Maturity Rating',
-                                'instructions' => 'Define the maturity rating for this article.',
+                                'instructions' => 'Select the maturity rating for this article.',
                                 'options' => [
                                     'GENERAL' => 'General',
                                     'KIDS' => 'Kids',
@@ -128,6 +134,7 @@ class EntryBlueprint implements AppleNewsBlueprint
                                 'taggable' => false,
                                 'push_tags' => false,
                                 'cast_booleans' => false,
+                                'width' => 50,
                             ],
                         ],
                     ],
