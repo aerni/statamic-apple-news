@@ -2,15 +2,15 @@
 
 namespace Aerni\AppleNews;
 
-use Aerni\AppleNews\Contracts\Article as Contract;
-use Aerni\AppleNews\Contracts\Template;
+use Statamic\Statamic;
+use Statamic\Facades\Addon;
 use Aerni\AppleNews\Facades\Api;
 use Aerni\AppleNews\Facades\Storage;
-use Aerni\AppleNews\Facades\Template as TemplateRepository;
-use ChapterThree\AppleNewsAPI\Document;
 use Statamic\Contracts\Entries\Entry;
-use Statamic\Facades\Addon;
-use Statamic\Statamic;
+use Aerni\AppleNews\Contracts\Template;
+use ChapterThree\AppleNewsAPI\Document;
+use Aerni\AppleNews\Contracts\Article as Contract;
+use Aerni\AppleNews\Facades\Template as TemplateRepository;
 
 class Article implements Contract
 {
@@ -68,7 +68,7 @@ class Article implements Contract
     {
         Api::deleteArticle($this->entry->get('apple_news_id'));
 
-        $this->updateEntry();
+        $this->resetEntry();
 
         return true;
     }
@@ -102,18 +102,28 @@ class Article implements Contract
     /**
      * Updates the article record of a given entry with the data of the Apple News API response.
      */
-    private function updateEntry(object $response = null): void
+    private function updateEntry(object $response): void
     {
         $this->entry->merge([
-            'apple_news_id' => $response->data->id ?? null,
-            'apple_news_share_url' => $response->data->shareUrl ?? null,
-            'apple_news_revision' => $response->data->revision ?? null,
-            'apple_news_state' => $response->data->state ?? null,
-            'apple_news_is_candidate_to_be_featured' => $response->data->isCandidateToBeFeatured ?? null,
-            'apple_news_is_hidden' => $response->data->isHidden ?? null,
-            'apple_news_is_preview' => $response->data->isPreview ?? null,
-            'apple_news_is_sponsored' => $response->data->isSponsored ?? null,
-            'apple_news_maturity_rating' => $response->data->maturityRating ?? null,
+            'apple_news_is_preview' => $response->data->isPreview,
+            'apple_news_is_hidden' => $response->data->isHidden,
+            'apple_news_is_candidate_to_be_featured' => $response->data->isCandidateToBeFeatured,
+            'apple_news_is_sponsored' => $response->data->isSponsored,
+            'apple_news_maturity_rating' => $response->data->maturityRating,
+            'apple_news_state' => $response->data->state,
+            'apple_news_id' => $response->data->id,
+            'apple_news_share_url' => $response->data->shareUrl,
+            'apple_news_revision' => $response->data->revision,
+        ]);
+    }
+
+    private function resetEntry(): void
+    {
+        $this->entry->merge([
+            'apple_news_state' => null,
+            'apple_news_id' => null,
+            'apple_news_share_url' => null,
+            'apple_news_revision' => null,
         ]);
     }
 
