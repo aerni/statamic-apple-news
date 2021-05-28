@@ -150,7 +150,7 @@ class Article implements Contract
 
     private function id(): string
     {
-        return $this->entry->slug();
+        return $this->entry->id();
     }
 
     private function title(): string
