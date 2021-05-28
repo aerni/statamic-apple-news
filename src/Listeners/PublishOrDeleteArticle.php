@@ -39,7 +39,7 @@ class PublishOrDeleteArticle
             return false;
         }
 
-        if (! $entry->get('apple_news_article_id')) {
+        if (! $entry->get('apple_news_id')) {
             return false;
         }
 

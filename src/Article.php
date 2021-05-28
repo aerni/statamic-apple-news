@@ -39,31 +39,26 @@ class Article implements Contract
      */
     public function publish(): bool
     {
-        // Add the latest revision ID if we have one.
-        if ($revision = $this->entry->get('apple_news_revision_id')) {
-            $metadata['revision'] = $revision;
-        }
-
-        // Prepare the data and send the request.
+        // Prepare the data for the request
         $data = [
             'files' => [], // TODO: Support file attachments
-            'metadata' => ! empty($metadata) ? json_encode(['data' => $metadata]) : null,
+            'metadata' => json_encode(['data' => $this->metadata()]),
             'json' => $this->json(),
         ];
 
         // Create or update the Apple News article.
-        $response = $this->entry->has('apple_news_article_id')
-            ? Api::updateArticle($this->entry->get('apple_news_article_id'), $data)
+        $response = $this->entry->has('apple_news_id')
+            ? Api::updateArticle($this->entry->get('apple_news_id'), $data)
             : Api::createArticle($data);
 
-        // Update the article record on the Statamic entry.
-        if (isset($response->data)) {
-            $this->updateArticleRecord($response);
-
-            return true;
+        // Return if the response doesn't include any data.
+        if (! isset($response->data)) {
+            return false;
         }
 
-        return false;
+        $this->updateEntry($response);
+
+        return true;
     }
 
     /**
@@ -71,9 +66,9 @@ class Article implements Contract
      */
     public function delete(): bool
     {
-        Api::deleteArticle($this->entry->get('apple_news_article_id'));
+        Api::deleteArticle($this->entry->get('apple_news_id'));
 
-        $this->updateArticleRecord();
+        $this->updateEntry();
 
         return true;
     }
@@ -92,18 +87,33 @@ class Article implements Contract
         return true;
     }
 
+    private function metadata(): array
+    {
+        return [
+            'revision' => $this->entry->get('apple_news_revision'),
+            'isCandidateToBeFeatured' => $this->entry->get('apple_news_is_candidate_to_be_featured'),
+            'isHidden' => $this->entry->get('apple_news_is_hidden'),
+            'isPreview' => $this->entry->get('apple_news_is_preview'),
+            'isSponsored' => $this->entry->get('apple_news_is_sponsored'),
+            'maturityRating' => $this->entry->get('apple_news_maturity_rating'),
+        ];
+    }
+
     /**
      * Updates the article record of a given entry with the data of the Apple News API response.
      */
-    private function updateArticleRecord(object $response = null): void
+    private function updateEntry(object $response = null): void
     {
         $this->entry->merge([
-            'apple_news_article_id' => $response->data->id ?? null,
-            'apple_news_revision_id' => $response->data->revision ?? null,
-            'apple_news_is_sponsored' => $response->data->isSponsored ?? null,
-            'apple_news_is_preview' => $response->data->isPreview ?? null,
-            'apple_news_state' => $response->data->state ?? null,
+            'apple_news_id' => $response->data->id ?? null,
             'apple_news_share_url' => $response->data->shareUrl ?? null,
+            'apple_news_revision' => $response->data->revision ?? null,
+            'apple_news_state' => $response->data->state ?? null,
+            'apple_news_is_candidate_to_be_featured' => $response->data->isCandidateToBeFeatured ?? null,
+            'apple_news_is_hidden' => $response->data->isHidden ?? null,
+            'apple_news_is_preview' => $response->data->isPreview ?? null,
+            'apple_news_is_sponsored' => $response->data->isSponsored ?? null,
+            'apple_news_maturity_rating' => $response->data->maturityRating ?? null,
         ]);
     }
 
