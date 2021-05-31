@@ -46,6 +46,7 @@ class ArticleRepository implements Contract
         $newState = $this->state($entry);
 
         if ($currentState !== $newState) {
+            // TODO: Probably shouldn't save here as it will always save the entry on load which can lead to issues.
             $entry->set('apple_news_state', $newState)->save();
         }
     }

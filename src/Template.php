@@ -17,6 +17,8 @@ abstract class Template implements Contract
         return get_class($this);
     }
 
+    // Method to prepare images
+
     abstract public function metadata(): Metadata;
 
     abstract public function layout(): Layout;
