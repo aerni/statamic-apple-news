@@ -2,10 +2,11 @@
 
 namespace Aerni\AppleNews;
 
+use Aerni\AppleNews\Facades\Api;
+use Illuminate\Support\Facades\Cache;
+use Statamic\Contracts\Entries\Entry;
 use Aerni\AppleNews\Contracts\Article;
 use Aerni\AppleNews\Contracts\ArticleRepository as Contract;
-use Aerni\AppleNews\Facades\Api;
-use Statamic\Contracts\Entries\Entry;
 
 class ArticleRepository implements Contract
 {
@@ -24,30 +25,28 @@ class ArticleRepository implements Contract
         return $this->make($entry)->delete();
     }
 
-    public function state(Entry $entry): ?string
+    public function state(Entry $entry): string
     {
         $id = $entry->get('apple_news_id');
-        $state = $entry->get('apple_news_state');
 
-        if (! $id) {
-            return null;
+        if (is_null($id)) {
+            return 'Unpublished';
         }
 
-        if ($state !== 'LIVE') {
-            return Api::article($id)->data->state;
+        $state = Cache::get("apple_news_{$id}_state");
+
+        if (is_null($state) || $state !== 'LIVE') {
+            // Get the state from the API and save it for 60 seconds in a temp key.
+            $state = Cache::remember("apple_news_{$id}_state_temp", 60, function () use ($id) {
+                return Api::article($id)->data->state;
+            });
+
+            // Save the temp key to the regular key if the state if 'LIVE'.
+            if ($state === 'LIVE') {
+                Cache::put("apple_news_{$id}_state", $state);
+            }
         }
 
-        return 'LIVE';
-    }
-
-    public function updateState(Entry $entry): void
-    {
-        $currentState = $entry->get('apple_news_state');
-        $newState = $this->state($entry);
-
-        if ($currentState !== $newState) {
-            // TODO: Probably shouldn't save here as it will always save the entry on load which can lead to issues.
-            $entry->set('apple_news_state', $newState)->save();
-        }
+        return $state;
     }
 }

@@ -12,7 +12,5 @@ interface ArticleRepository
 
     public function delete(Entry $entry): bool;
 
-    public function state(Entry $entry): ?string;
-
-    public function updateState(Entry $entry): void;
+    public function state(Entry $entry): string;
 }

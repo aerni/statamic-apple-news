@@ -8,6 +8,7 @@ use Aerni\AppleNews\Facades\Api;
 use Aerni\AppleNews\Facades\Storage;
 use Aerni\AppleNews\Facades\Template as TemplateRepository;
 use ChapterThree\AppleNewsAPI\Document;
+use Illuminate\Support\Facades\Cache;
 use Statamic\Contracts\Entries\Entry;
 use Statamic\Facades\Addon;
 use Statamic\Statamic;
@@ -110,17 +111,17 @@ class Article implements Contract
             'apple_news_is_candidate_to_be_featured' => $response->data->isCandidateToBeFeatured,
             'apple_news_is_sponsored' => $response->data->isSponsored,
             'apple_news_maturity_rating' => $response->data->maturityRating,
-            'apple_news_state' => $response->data->state,
             'apple_news_id' => $response->data->id,
             'apple_news_share_url' => $response->data->shareUrl,
             'apple_news_revision' => $response->data->revision,
         ]);
+
+        Cache::put("apple_news_{$response->data->id}_state", $response->data->state);
     }
 
     private function resetEntry(): void
     {
         $this->entry->merge([
-            'apple_news_state' => null,
             'apple_news_id' => null,
             'apple_news_share_url' => null,
             'apple_news_revision' => null,
