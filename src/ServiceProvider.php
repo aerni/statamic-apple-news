@@ -40,6 +40,7 @@ class ServiceProvider extends AddonServiceProvider
         });
     }
 
+    // TODO: Check if I need all the bindings.
     protected function bindContracts()
     {
         $this->app->singleton(
