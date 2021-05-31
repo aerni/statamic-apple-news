@@ -107,22 +107,23 @@ class EntryBlueprint implements AppleNewsBlueprint
                                 'width' => 50,
                             ],
                         ],
-                        // [
-                        //     'handle' => 'apple_news_accessory_text',
-                        //     'field' => [
-                        //         'input_type:' => 'text',
-                        //         'character_limit' => 100,
-                        //         'antlers' => false,
-                        //         'display' => 'Accessory Text',
-                        //         'instructions' => 'The text to include below the article excerpt in the channel view, such as a byline or category label.',
-                        //         'type' => 'text',
-                        //         'icon' => 'text',
-                        //         'listable' => false,
-                        //         'validate' => [
-                        //             'max:100'
-                        //         ],
-                        //     ],
-                        // ],
+                        [
+                            'handle' => 'apple_news_accessory_text',
+                            'field' => [
+                                'input_type:' => 'text',
+                                'character_limit' => 100,
+                                'antlers' => false,
+                                'display' => 'Accessory Text',
+                                'instructions' => 'The text below the article excerpt.',
+                                'type' => 'text',
+                                'icon' => 'text',
+                                'listable' => false,
+                                'validate' => [
+                                    'max:100'
+                                ],
+                                'width' => 50,
+                            ],
+                        ],
                         [
                             'handle' => 'apple_news_maturity_rating',
                             'field' => [
