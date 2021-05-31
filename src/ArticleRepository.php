@@ -2,11 +2,11 @@
 
 namespace Aerni\AppleNews;
 
+use Aerni\AppleNews\Contracts\Article;
+use Aerni\AppleNews\Contracts\ArticleRepository as Contract;
 use Aerni\AppleNews\Facades\Api;
 use Illuminate\Support\Facades\Cache;
 use Statamic\Contracts\Entries\Entry;
-use Aerni\AppleNews\Contracts\Article;
-use Aerni\AppleNews\Contracts\ArticleRepository as Contract;
 
 class ArticleRepository implements Contract
 {
