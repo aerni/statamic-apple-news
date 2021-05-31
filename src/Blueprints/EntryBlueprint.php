@@ -119,7 +119,7 @@ class EntryBlueprint implements AppleNewsBlueprint
                                 'icon' => 'text',
                                 'listable' => false,
                                 'validate' => [
-                                    'max:100'
+                                    'max:100',
                                 ],
                                 'width' => 50,
                             ],
