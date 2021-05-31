@@ -25,6 +25,14 @@ class EntryBlueprint implements AppleNewsBlueprint
                             ],
                         ],
                         [
+                            'handle' => 'apple_news_state',
+                            'field' => [
+                                'type' => 'article_state',
+                                'display' => 'Publish State',
+                                'instructions' => 'The publish state of this article',
+                            ],
+                        ],
+                        [
                             'handle' => 'apple_news_template',
                             'field' => [
                                 'type' => 'select',
@@ -134,18 +142,6 @@ class EntryBlueprint implements AppleNewsBlueprint
                                 'taggable' => false,
                                 'push_tags' => false,
                                 'cast_booleans' => false,
-                                'width' => 50,
-                            ],
-                        ],
-                        [
-                            'handle' => 'apple_news_state',
-                            'field' => [
-                                'type' => 'text',
-                                'display' => 'Status',
-                                'instructions' => 'The status of this article',
-                                'icon' => 'text',
-                                'listable' => 'hidden',
-                                'read_only' => 'true',
                                 'width' => 50,
                             ],
                         ],

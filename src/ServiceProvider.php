@@ -20,6 +20,18 @@ class ServiceProvider extends AddonServiceProvider
         ],
     ];
 
+    protected $fieldtypes = [
+        Fieldtypes\ArticleStateFieldtype::class,
+    ];
+
+    protected $scripts = [
+        __DIR__.'/../resources/dist/js/apple-news.js',
+    ];
+
+    // protected $stylesheets = [
+    //     __DIR__.'/../resources/dist/css/apple-news.css',
+    // ];
+
     public function boot()
     {
         parent::boot();
