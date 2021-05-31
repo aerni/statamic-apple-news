@@ -20,7 +20,7 @@ class EntryBlueprint implements AppleNewsBlueprint
                             'field' => [
                                 'type' => 'section',
                                 'display' => 'Apple News',
-                                'instructions' => 'Configure the publishing options for this article.',
+                                'instructions' => 'Configure the publishing options for this article. [Learn more](https://developer.apple.com/documentation/apple_news/create_article_metadata_fields) about the available options.',
                                 'listable' => 'hidden',
                             ],
                         ],
