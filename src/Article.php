@@ -181,6 +181,6 @@ class Article implements Contract
 
     private function locale(): string
     {
-        return $this->entry->site()->shortLocale();
+        return $this->entry->site()->locale();
     }
 }
