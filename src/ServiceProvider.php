@@ -10,7 +10,6 @@ class ServiceProvider extends AddonServiceProvider
     protected $listen = [
         'Statamic\Events\EntryBlueprintFound' => [
             'Aerni\AppleNews\Listeners\AppendEntryBlueprint',
-            'Aerni\AppleNews\Listeners\UpdateArticleState',
         ],
         'Statamic\Events\EntryDeleted' => [
             'Aerni\AppleNews\Listeners\DeleteArticle',
