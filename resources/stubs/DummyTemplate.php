@@ -20,7 +20,9 @@ class DummyTemplate extends Template
 
     public function layout(): Layout
     {
-        return new Layout(7, 1024);
+        return (new Layout(7, 1024))
+            ->setMargin(60)
+            ->setGutter(20);
     }
 
     public function components(): array
