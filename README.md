@@ -88,6 +88,10 @@ APPLE_NEWS_SECRET=********************************************
 ### Site
 Add the handle of the site you want to use to publish to Apple News.
 
+```php
+'site' => 'default'
+```
+
 ### Collections
 Add the handles of the collections whose entries you want to publish to Apple News:
 
@@ -95,17 +99,17 @@ Add the handles of the collections whose entries you want to publish to Apple Ne
 'collections' => [
     'articles',
     'interviews'
-],
+]
 ```
 
 ### Templates
 Add your article template classes:
 
 ```php
-'collections' => [
+'templates' => [
     \App\AppleNews\DefaultTemplate::class,
     \App\AppleNews\InterviewTemplate::class,
-],
+]
 ```
 
 ## Templates
