@@ -3,9 +3,9 @@
 namespace Aerni\AppleNews\Commands;
 
 use Aerni\AppleNews\Facades\Article;
-use Statamic\Facades\Entry;
 use Illuminate\Console\Command;
 use Statamic\Console\RunsInPlease;
+use Statamic\Facades\Entry;
 
 class MakeArticle extends Command
 {
