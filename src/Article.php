@@ -115,14 +115,59 @@ class Article implements Contract
     {
         $this->document = new Document($this->id(), $this->title(), $this->locale(), $this->template->layout());
 
-        $this->addMetadata();
         $this->addComponents();
+        $this->addComponentLayouts();
+        $this->addComponentStyles();
         $this->addComponentTextStyles();
+
+        $this->setAdvertisingSettings();
+        $this->setSubtitle();
+        $this->setMetadata();
+        $this->setDocumentStyle();
+        $this->addTextStyles();
 
         return $this->document;
     }
 
-    private function addMetadata(): void
+    private function addComponents(): void
+    {
+        foreach ($this->template->components() as $component) {
+            $this->document->addComponent($component);
+        }
+    }
+
+    private function addComponentLayouts(): void
+    {
+        foreach ($this->template->componentLayouts() as $name => $layout) {
+            $this->document->addComponentLayout($name, $layout);
+        }
+    }
+
+    private function addComponentStyles(): void
+    {
+        foreach ($this->template->componentStyles() as $name => $style) {
+            $this->document->addComponentStyle($name, $style);
+        }
+    }
+
+    private function addComponentTextStyles(): void
+    {
+        foreach ($this->template->componentTextStyles() as $name => $style) {
+            $this->document->addComponentTextStyle($name, $style);
+        }
+    }
+
+    private function setAdvertisingSettings(): void
+    {
+        $this->document->setAdvertisingSettings($this->template->advertisingSettings());
+    }
+
+    private function setSubtitle(): void
+    {
+        $this->document->setSubtitle($this->template->subtitle());
+    }
+
+    private function setMetadata(): void
     {
         $addon = Addon::get('aerni/apple-news');
 
@@ -133,17 +178,15 @@ class Article implements Contract
         $this->document->setMetadata($metadata);
     }
 
-    private function addComponents(): void
+    private function setDocumentStyle(): void
     {
-        foreach ($this->template->components() as $component) {
-            $this->document->addComponent($component);
-        }
+        $this->document->setDocumentStyle($this->template->documentStyle());
     }
 
-    private function addComponentTextStyles(): void
+    private function addTextStyles(): void
     {
-        foreach ($this->template->componentTextStyles() as $name => $component) {
-            $this->document->addComponentTextStyle($name, $component);
+        foreach ($this->template->textStyles() as $name => $style) {
+            $this->document->addTextStyle($name, $style);
         }
     }
 
