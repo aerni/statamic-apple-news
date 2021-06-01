@@ -7,23 +7,23 @@ use Statamic\Facades\File;
 
 class Storage implements Contract
 {
-    public function get(string $collection, string $id): string
+    public function get(string $collection, string $slug): string
     {
-        $path = storage_path("statamic/addons/apple-news/{$collection}/{$id}.json");
+        $path = storage_path("statamic/addons/apple-news/{$collection}/{$slug}.json");
 
         return File::get($path);
     }
 
-    public function put(string $collection, string $id, string $article): void
+    public function put(string $collection, string $slug, string $json): void
     {
-        $path = storage_path("statamic/addons/apple-news/{$collection}/{$id}.json");
+        $path = storage_path("statamic/addons/apple-news/{$collection}/{$slug}.json");
 
-        File::put($path, $article);
+        File::put($path, $json);
     }
 
-    public function delete(string $collection, string $id): void
+    public function delete(string $collection, string $slug): void
     {
-        $path = storage_path("statamic/addons/apple-news/{$collection}/{$id}.json");
+        $path = storage_path("statamic/addons/apple-news/{$collection}/{$slug}.json");
 
         File::delete($path);
     }
