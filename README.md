@@ -85,7 +85,7 @@ Add the handles of the collections whose entries you want to publish to Apple Ne
 ```
 
 ### Templates
-Add your custom article template classes:
+Add your article template classes:
 
 ```php
 'collections' => [
@@ -96,7 +96,7 @@ Add your custom article template classes:
 
 ## Templates
 
-Create your first article template class:
+Create your first article template:
 
 ```bash
 php please apple-news:template {name}
@@ -106,9 +106,9 @@ This will publish a new template to `app/AppleNews/{name}.php`.
 
 ## Preview Article in News Preview
 
-[News Preview]((https://developer.apple.com/news-preview/)) is an app provided by Apple that lets you preview your articles in the News app. This is super useful when building out your templates.
+[News Preview](https://developer.apple.com/news-preview/) is an app provided by Apple that lets you preview your articles in the News app. This is super useful when building out your templates.
 
-Use the following command and provide the id of the entry you want to preview:
+Use the following command and provide the `id` of the Statamic entry you want to use for preview:
 
 ```bash
 php please apple-news:preview {entryId}
@@ -116,10 +116,10 @@ php please apple-news:preview {entryId}
 
 This will create the `article.json` file in `storage/statamic/addons/apple-news/preview/`.
 
-Open the `News Preview` app, select the `article.json` and the device you want to use for preview.
+Now you can open the `News Preview` app, select the `article.json` and the device you want to use for preview.
 
-## Basic usage
-Navigate to the collection entry you want to publish on Apple News. You will see a new tab "Apple News" at the top. Customize the options to your liking. When you're ready to publish, flick the toggle called "Published". You're article is now being processed by Apple News.
+## Publish Article on Apple News
+Open the collection entry you want to publish on Apple News, navigate to the "Apple News" tab, and customize the options to your liking. Once you're ready to publish, flick the "Published" toggle and save the entry. Your article is now being processed by Apple News. Refresh the page to see the current "Publish State".
 
 ## License
 Apple News is **commercial software** but has an open-source codebase. If you want to use it in production, you'll need to [buy a license from the Statamic Marketplace](https://statamic.com/addons/aerni/apple-news).
