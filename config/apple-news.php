@@ -7,7 +7,7 @@ return [
     | Apple News API
     |--------------------------------------------------------------------------
     |
-    | The Apple News API credentials for your channel.
+    | The Apple News API credentials of your channel.
     |
     */
 
