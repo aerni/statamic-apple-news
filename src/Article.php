@@ -19,7 +19,6 @@ class Article implements Contract
     protected Template $template;
     protected Document $document;
 
-
     public function __construct(Entry $entry)
     {
         $this->entry = $entry;
@@ -27,17 +26,6 @@ class Article implements Contract
         $this->document = $this->document();
     }
 
-    /**
-     * Get the article as json in the Apple News format.
-     */
-    public function json(): string
-    {
-        return $this->document->json();
-    }
-
-    /**
-     * Publish the article on Apple News and update the entry record.
-     */
     public function publish(): bool
     {
         // Prepare the data for the request
@@ -62,9 +50,6 @@ class Article implements Contract
         return true;
     }
 
-    /**
-     * Deletes an article on Apple News and its record on the Statamic entry.
-     */
     public function delete(): bool
     {
         Api::deleteArticle($this->entry->get('apple_news_id'));
@@ -74,16 +59,14 @@ class Article implements Contract
         return true;
     }
 
-    public function saveFile(): bool
+    public function json(): string
     {
-        Storage::put($this->entry->collectionHandle(), $this->id(), $this->json());
-
-        return true;
+        return $this->document->json();
     }
 
-    public function deleteFile(): bool
+    public function saveJson(): bool
     {
-        Storage::delete($this->entry->collectionHandle(), $this->id());
+        Storage::put($this->entry->collectionHandle(), $this->entry->slug(), $this->json());
 
         return true;
     }
@@ -100,9 +83,6 @@ class Article implements Contract
         ];
     }
 
-    /**
-     * Updates the article record of a given entry with the data of the Apple News API response.
-     */
     private function updateEntry(object $response): void
     {
         $this->entry->merge([
