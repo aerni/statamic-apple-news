@@ -6,7 +6,7 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
 use Statamic\Console\RunsInPlease;
 
-class MakeAppleNewsTemplate extends Command
+class MakeArticle extends Command
 {
     use RunsInPlease;
 

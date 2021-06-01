@@ -8,7 +8,7 @@ use Statamic\Statamic;
 class ServiceProvider extends AddonServiceProvider
 {
     protected $commands = [
-        Commands\MakeAppleNewsTemplate::class,
+        Commands\MakeTemplate::class,
     ];
 
     protected $fieldtypes = [
