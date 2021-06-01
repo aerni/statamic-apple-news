@@ -64,11 +64,9 @@ class Article implements Contract
         return $this->document->json();
     }
 
-    public function saveJson(): bool
+    public function savePreview(): void
     {
-        Storage::put($this->entry->collectionHandle(), $this->entry->slug(), $this->json());
-
-        return true;
+        Storage::put('preview', 'article', $this->json());
     }
 
     private function metadata(): array

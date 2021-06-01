@@ -20,7 +20,7 @@ interface Article
     public function json(): string;
 
     /**
-     * Save the article as JSON to file.
+     * Save the article as article.json for News Preview.
      */
-    public function saveJson(): bool;
+    public function savePreview(): void;
 }

@@ -8,7 +8,7 @@ use Statamic\Statamic;
 class ServiceProvider extends AddonServiceProvider
 {
     protected $commands = [
-        Commands\MakeArticle::class,
+        Commands\MakeArticlePreview::class,
         Commands\MakeTemplate::class,
     ];
 
