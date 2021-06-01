@@ -27,7 +27,7 @@ interface Template
 
     public function metadata(): Metadata;
 
-    public function documentStyle(): DocumentStyle;
+    // public function documentStyle(): DocumentStyle;
 
     public function textStyles(): array;
 }

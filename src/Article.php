@@ -123,7 +123,7 @@ class Article implements Contract
         $this->setAdvertisingSettings();
         $this->setSubtitle();
         $this->setMetadata();
-        $this->setDocumentStyle();
+        // $this->setDocumentStyle();
         $this->addTextStyles();
 
         return $this->document;
@@ -178,10 +178,10 @@ class Article implements Contract
         $this->document->setMetadata($metadata);
     }
 
-    private function setDocumentStyle(): void
-    {
-        $this->document->setDocumentStyle($this->template->documentStyle());
-    }
+    // private function setDocumentStyle(): void
+    // {
+    //     $this->document->setDocumentStyle($this->template->documentStyle());
+    // }
 
     private function addTextStyles(): void
     {

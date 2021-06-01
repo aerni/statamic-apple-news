@@ -37,7 +37,7 @@ abstract class Template implements Contract
 
     abstract public function metadata(): Metadata;
 
-    abstract public function documentStyle(): DocumentStyle;
+    // abstract public function documentStyle(): DocumentStyle;
 
     abstract public function textStyles(): array;
 }
