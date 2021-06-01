@@ -108,7 +108,8 @@ class Article implements Contract
 
     private function template(): Template
     {
-        return TemplateRepository::find($this->entry->get('apple_news_template'));
+        return TemplateRepository::find($this->entry->get('apple_news_template'))
+            ->entry($this->entry);
     }
 
     private function document(): Document

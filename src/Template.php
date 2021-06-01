@@ -2,10 +2,11 @@
 
 namespace Aerni\AppleNews;
 
-use Aerni\AppleNews\Contracts\Template as Contract;
-use ChapterThree\AppleNewsAPI\Document\AdvertisingSettings;
-use ChapterThree\AppleNewsAPI\Document\Layouts\Layout;
+use Statamic\Contracts\Entries\Entry;
 use ChapterThree\AppleNewsAPI\Document\Metadata;
+use Aerni\AppleNews\Contracts\Template as Contract;
+use ChapterThree\AppleNewsAPI\Document\Layouts\Layout;
+use ChapterThree\AppleNewsAPI\Document\AdvertisingSettings;
 use ChapterThree\AppleNewsAPI\Document\Styles\DocumentStyle;
 
 abstract class Template implements Contract
@@ -17,6 +18,13 @@ abstract class Template implements Contract
         }
 
         return get_class($this);
+    }
+
+    public function entry(Entry $entry): self
+    {
+        $this->entry = $entry;
+
+        return $this;
     }
 
     // Method to prepare images
