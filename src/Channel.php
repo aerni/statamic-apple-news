@@ -9,6 +9,7 @@ class Channel implements Contract
     protected string $id;
     protected string $key;
     protected string $secret;
+    protected string $site;
     protected array $collections;
     protected array $templates;
 
@@ -19,6 +20,7 @@ class Channel implements Contract
         $this->id = $config['id'];
         $this->key = $config['key'];
         $this->secret = $config['secret'];
+        $this->site = $config['site'];
         $this->collections = $config['collections'];
         $this->templates = $config['templates'];
     }
@@ -36,6 +38,11 @@ class Channel implements Contract
     public function secret(): string
     {
         return $this->secret;
+    }
+
+    public function site(): string
+    {
+        return $this->site;
     }
 
     public function collections(): array

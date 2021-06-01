@@ -19,7 +19,7 @@ class AppendEntryBlueprint
         if ($this->shouldAppendBlueprint($event->entry)) {
             $contents = $event->blueprint->contents();
 
-            $entryBlueprint = EntryBlueprint::make()->contents()['sections']['main'];
+            $entryBlueprint = EntryBlueprint::make($event->entry)->contents()['sections']['main'];
 
             $contents['sections']['Apple News'] = $entryBlueprint;
 

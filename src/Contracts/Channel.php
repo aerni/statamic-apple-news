@@ -20,6 +20,11 @@ interface Channel
     public function secret(): string;
 
     /**
+     * Get the site supported by this channel.
+     */
+    public function site(): string;
+
+    /**
      * Get the collections supported by this channel.
      */
     public function collections(): array;

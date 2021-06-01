@@ -2,14 +2,26 @@
 
 namespace Aerni\AppleNews\Blueprints;
 
-use Aerni\AppleNews\Contracts\AppleNewsBlueprint;
-use Aerni\AppleNews\Facades\Template;
 use Statamic\Facades\Blueprint;
+use Aerni\AppleNews\Facades\Channel;
+use Aerni\AppleNews\Facades\Template;
+use Statamic\Contracts\Entries\Entry;
+use Aerni\AppleNews\Contracts\AppleNewsBlueprint;
+use Statamic\Facades\Site;
 use Statamic\Fields\Blueprint as StatamicBlueprint;
 
 class EntryBlueprint implements AppleNewsBlueprint
 {
-    public static function make(): StatamicBlueprint
+    public static function make(Entry $entry): StatamicBlueprint
+    {
+        if ($entry->site()->handle() !== Channel::site()) {
+            return self::emptyBlueprint();
+        }
+
+        return self::fullBlueprint();
+    }
+
+    private static function fullBlueprint(): StatamicBlueprint
     {
         return Blueprint::make()->setContents([
             'sections' => [
@@ -144,6 +156,29 @@ class EntryBlueprint implements AppleNewsBlueprint
                                 'push_tags' => false,
                                 'cast_booleans' => false,
                                 'width' => 50,
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ]);
+    }
+
+    private static function emptyBlueprint(): StatamicBlueprint
+    {
+        $siteName = Site::get(Channel::site())->name();
+
+        return Blueprint::make()->setContents([
+            'sections' => [
+                'main' => [
+                    'fields' => [
+                        [
+                            'handle' => 'apple_news_section',
+                            'field' => [
+                                'type' => 'section',
+                                'display' => 'Apple News',
+                                'instructions' => "You can only publish to Apple News from the `{$siteName}` site.",
+                                'listable' => 'hidden',
                             ],
                         ],
                     ],
