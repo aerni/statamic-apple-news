@@ -2,28 +2,27 @@
 
 namespace Aerni\AppleNews\Commands;
 
+use Aerni\AppleNews\Facades\Article;
+use Statamic\Facades\Entry;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\File;
 use Statamic\Console\RunsInPlease;
 
 class MakeArticle extends Command
 {
     use RunsInPlease;
 
-    protected $signature = 'make:apple-news-template {name}';
-    protected $description = 'Make a new article template for Apple News';
+    protected $signature = 'apple-news:json {entryId}';
+    protected $description = 'Create an article of an entry and save it as JSON';
 
     public function handle()
     {
-        $stub = File::get(__DIR__ . '/../../resources/stubs/DummyTemplate.php');
-        $stub = str_replace('DummyTemplate', $this->argument('name'), $stub);
-        $path = app_path('AppleNews/' . $this->argument('name') . '.php');
+        $entry = Entry::find($this->argument('entryId'));
+
+        Article::make($entry)->saveJson();
+
+        $path = storage_path("statamic/addons/apple-news/{$entry->collectionHandle()}/{$entry->slug()}.json");
         $relativePath = str_replace(base_path() . '/', '', $path);
 
-        if (! File::exists($path) || $this->confirm("The template class <comment>{$this->argument('name')}</comment> already exists. Overwrite?")) {
-            File::ensureDirectoryExists(app_path('AppleNews'));
-            File::put($path, $stub);
-            $this->line("<info>[✓]</info> The template class {$this->argument('name')} was successfully created: <comment>{$relativePath}</comment>");
-        }
+        $this->line("<info>[✓]</info> The article has been successfully created: <comment>{$relativePath}</comment>");
     }
 }
