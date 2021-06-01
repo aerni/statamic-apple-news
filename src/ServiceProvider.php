@@ -7,6 +7,14 @@ use Statamic\Statamic;
 
 class ServiceProvider extends AddonServiceProvider
 {
+    protected $commands = [
+        Commands\MakeAppleNewsTemplate::class,
+    ];
+
+    protected $fieldtypes = [
+        Fieldtypes\ArticleStateFieldtype::class,
+    ];
+
     protected $listen = [
         'Statamic\Events\EntryBlueprintFound' => [
             'Aerni\AppleNews\Listeners\AppendEntryBlueprint',
@@ -17,10 +25,6 @@ class ServiceProvider extends AddonServiceProvider
         'Statamic\Events\EntrySaving' => [
             'Aerni\AppleNews\Listeners\PublishOrDeleteArticle',
         ],
-    ];
-
-    protected $fieldtypes = [
-        Fieldtypes\ArticleStateFieldtype::class,
     ];
 
     protected $scripts = [
