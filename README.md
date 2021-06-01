@@ -63,12 +63,6 @@ return [
 ];
 ```
 
-Create your first article template class:
-
-```bash
-php please apple-news:template DefaultTemplate
-```
-
 ## Configuration
 
 ### Apple News API
@@ -99,6 +93,30 @@ Add your custom article template classes:
     \App\AppleNews\InterviewTemplate::class,
 ],
 ```
+
+## Templates
+
+Create your first article template class:
+
+```bash
+php please apple-news:template {name}
+```
+
+This will publish a new template to `app/AppleNews/{name}.php`.
+
+## Preview Article in News Preview
+
+[News Preview]((https://developer.apple.com/news-preview/)) is an app provided by Apple that lets you preview your articles in the News app. This is super useful when building out your templates.
+
+Use the following command and provide the id of the entry you want to preview:
+
+```bash
+php please apple-news:preview {entryId}
+```
+
+This will create the `article.json` file in `storage/statamic/addons/apple-news/preview/`.
+
+Open the `News Preview` app, select the `article.json` and the device you want to use for preview.
 
 ## Basic usage
 Navigate to the collection entry you want to publish on Apple News. You will see a new tab "Apple News" at the top. Customize the options to your liking. When you're ready to publish, flick the toggle called "Published". You're article is now being processed by Apple News.
