@@ -2,11 +2,11 @@
 
 namespace Aerni\AppleNews\Blueprints;
 
-use Statamic\Facades\Blueprint;
+use Aerni\AppleNews\Contracts\AppleNewsBlueprint;
 use Aerni\AppleNews\Facades\Channel;
 use Aerni\AppleNews\Facades\Template;
 use Statamic\Contracts\Entries\Entry;
-use Aerni\AppleNews\Contracts\AppleNewsBlueprint;
+use Statamic\Facades\Blueprint;
 use Statamic\Facades\Site;
 use Statamic\Fields\Blueprint as StatamicBlueprint;
 

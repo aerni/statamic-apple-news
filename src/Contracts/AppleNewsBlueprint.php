@@ -2,8 +2,8 @@
 
 namespace Aerni\AppleNews\Contracts;
 
-use Statamic\Fields\Blueprint;
 use Statamic\Contracts\Entries\Entry;
+use Statamic\Fields\Blueprint;
 
 interface AppleNewsBlueprint
 {
