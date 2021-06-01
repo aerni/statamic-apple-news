@@ -114,6 +114,7 @@ Add your article template classes:
 
 ## Templates
 
+### Create Template
 Create your first article template:
 
 ```bash
@@ -121,6 +122,9 @@ php please apple-news:template {name}
 ```
 
 This will publish a new template to `app/AppleNews/{name}.php`.
+
+### Customize Template
+Each template consists of a set of methods to configure your articles. They are powered by the excellent [AppleNewsAPI](https://github.com/chapter-three/AppleNewsAPI) library that lets you define your article's layout, components, styles, etc. Make sure to have a [look at the source](https://github.com/chapter-three/AppleNewsAPI/tree/master/src/Document) to get an idea of the classes and methods available to you.
 
 ## Preview Article in News Preview
 
