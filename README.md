@@ -86,7 +86,7 @@ APPLE_NEWS_SECRET=********************************************
 ```
 
 ### Site
-Add the handle of the site you want to use to publish to Apple News.
+Add the handle of the site you want to use to publish to Apple News:
 
 ```php
 'site' => 'default'
