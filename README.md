@@ -36,6 +36,17 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Site
+    |--------------------------------------------------------------------------
+    |
+    | The handle of the site you want to use to publish to Apple News.
+    |
+    */
+
+    'site' => 'default',
+
+    /*
+    |--------------------------------------------------------------------------
     | Collections
     |--------------------------------------------------------------------------
     |
@@ -58,7 +69,7 @@ return [
 
     'templates' => [
         // \App\AppleNews\DefaultTemplate::class,
-    ]
+    ],
 
 ];
 ```
@@ -73,6 +84,9 @@ APPLE_NEWS_CHANNEL_ID=************************************
 APPLE_NEWS_KEY=************************************
 APPLE_NEWS_SECRET=********************************************
 ```
+
+### Site
+Add the handle of the site you want to use to publish to Apple News.
 
 ### Collections
 Add the handles of the collections whose entries you want to publish to Apple News:
