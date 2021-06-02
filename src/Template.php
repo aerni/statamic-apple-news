@@ -2,12 +2,12 @@
 
 namespace Aerni\AppleNews;
 
-use Statamic\Contracts\Entries\Entry;
-use ChapterThree\AppleNewsAPI\Document\Metadata;
 use Aerni\AppleNews\Contracts\Template as Contract;
-use ChapterThree\AppleNewsAPI\Document\Layouts\Layout;
 use ChapterThree\AppleNewsAPI\Document\AdvertisingSettings;
+use ChapterThree\AppleNewsAPI\Document\Layouts\Layout;
+use ChapterThree\AppleNewsAPI\Document\Metadata;
 use ChapterThree\AppleNewsAPI\Document\Styles\DocumentStyle;
+use Statamic\Contracts\Entries\Entry;
 
 abstract class Template implements Contract
 {
