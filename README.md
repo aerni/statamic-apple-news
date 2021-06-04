@@ -1,7 +1,7 @@
 ![Statamic](https://flat.badgen.net/badge/Statamic/3.0+/FF269E) ![Packagist version](https://flat.badgen.net/packagist/v/aerni/apple-news/latest) ![Packagist Total Downloads](https://flat.badgen.net/packagist/dt/aerni/apple-news)
 
 # Apple News
-Publish your Statamic collection entries to Apple News.
+An addon to easily create and publish Apple News articles from your Statamic entries.
 
 ## Installation
 Install the addon using Composer.
