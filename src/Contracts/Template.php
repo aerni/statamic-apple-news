@@ -24,13 +24,13 @@ interface Template
 
     public function componentTextStyles(): array;
 
-    public function advertisingSettings(): AdvertisingSettings;
+    public function textStyles(): array;
 
     public function subtitle(): string;
 
     public function metadata(): Metadata;
 
-    // public function documentStyle(): DocumentStyle;
+    public function advertisingSettings(): AdvertisingSettings;
 
-    public function textStyles(): array;
+    // public function documentStyle(): DocumentStyle;
 }

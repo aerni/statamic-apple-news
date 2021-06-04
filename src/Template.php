@@ -27,8 +27,6 @@ abstract class Template implements Contract
         return $this;
     }
 
-    // Method to prepare images
-
     abstract public function layout(): Layout;
 
     abstract public function components(): array;
@@ -39,13 +37,13 @@ abstract class Template implements Contract
 
     abstract public function componentTextStyles(): array;
 
-    abstract public function advertisingSettings(): AdvertisingSettings;
+    abstract public function textStyles(): array;
 
     abstract public function subtitle(): string;
 
     abstract public function metadata(): Metadata;
 
-    // abstract public function documentStyle(): DocumentStyle;
+    abstract public function advertisingSettings(): AdvertisingSettings;
 
-    abstract public function textStyles(): array;
+    // abstract public function documentStyle(): DocumentStyle;
 }
