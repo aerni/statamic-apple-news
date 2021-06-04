@@ -114,7 +114,7 @@ Add your article template classes:
 
 ## Templates
 
-### Create Template
+### Creating a template
 Create your first article template:
 
 ```bash
@@ -123,10 +123,10 @@ php please apple-news:template {name}
 
 This will publish a new template to `app/AppleNews/{name}.php`.
 
-### Customize Template
+### Customizing a template
 Each template consists of a set of methods to configure your articles. They are powered by the excellent [AppleNewsAPI](https://github.com/chapter-three/AppleNewsAPI) library that lets you define your article's layout, components, styles, etc. Make sure to have a [look at the source](https://github.com/chapter-three/AppleNewsAPI/tree/master/src/Document) to get an idea of the classes and methods available to you.
 
-## Preview Article in News Preview
+## Previewing an article
 
 [News Preview](https://developer.apple.com/news-preview/) is an app provided by Apple that lets you preview your articles in the News app. This is super useful when building out your templates.
 
@@ -140,8 +140,20 @@ This will create the `article.json` file in `storage/statamic/addons/apple-news/
 
 Now you can open the `News Preview` app, select the `article.json` and the device you want to use for preview.
 
-## Publish Article on Apple News
-Open the collection entry you want to publish on Apple News, navigate to the "Apple News" tab, and customize the options to your liking. Once you're ready to publish, flick the "Published" toggle and save the entry. Your article is now being processed by Apple News. Refresh the page to see the current "Publish State".
+## Creating an article
+
+### Publishing
+Open the entry in the Statamic CP that you want to publish on Apple News. Navigate to the `Apple News` tab and customize the options to your liking. Once you're ready to publish, flick the `Published` toggle and save the entry. The article is now being processed by Apple News. Refresh the page to see the current `Publish State`.
+
+### Updating
+The article will be updated every time you save the Statamic entry in the CP.
+
+> **Note:** The article will actually be updated every time the `Statamic\Events\EntrySaving` event is dispatched.
+
+### Unpublishing aka Deleting
+Unflick the `Published` toggle to delete the article. Deleting a Statamic entry will do the same.
+
+> **Note:** There is no option to unpublish an article per se. Alternatively you can use the `Hidden` toggle.
 
 ## License
 Apple News is **commercial software** but has an open-source codebase. If you want to use it in production, you'll need to [buy a license from the Statamic Marketplace](https://statamic.com/addons/aerni/apple-news).
