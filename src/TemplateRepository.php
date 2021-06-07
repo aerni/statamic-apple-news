@@ -23,7 +23,6 @@ class TemplateRepository implements Contract
         return $this->templates->toArray();
     }
 
-    // TODO: Should probably also allow to return null. What if an entry has a template set, that does not exist anymore?
     public function find(string $key): Template
     {
         return $this->templates->first(function ($template) use ($key) {
