@@ -4,7 +4,6 @@ namespace Aerni\AppleNews\Contracts;
 
 use ChapterThree\AppleNewsAPI\Document\Layouts\Layout;
 use ChapterThree\AppleNewsAPI\Document\Metadata;
-use ChapterThree\AppleNewsAPI\Document\Styles\DocumentStyle;
 use Statamic\Contracts\Entries\Entry;
 
 interface Template
@@ -32,6 +31,4 @@ interface Template
     public function componentTextStyles(): array;
 
     public function textStyles(): array;
-
-    // public function documentStyle(): DocumentStyle;
 }
