@@ -41,6 +41,8 @@ abstract class Template implements Contract
 
     abstract public function subtitle(): string;
 
+    abstract public function accessoryText(): ?string;
+
     abstract public function metadata(): Metadata;
 
     abstract public function advertisingSettings(): AdvertisingSettings;

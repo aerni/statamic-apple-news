@@ -78,6 +78,7 @@ class Article implements Contract
             'isPreview' => $this->entry->get('apple_news_is_preview'),
             'isSponsored' => $this->entry->get('apple_news_is_sponsored'),
             'maturityRating' => $this->entry->get('apple_news_maturity_rating'),
+            'accessoryText' => $this->template->accessoryText(),
         ];
     }
 

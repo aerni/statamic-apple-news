@@ -93,6 +93,15 @@ class DummyTemplate extends Template
     }
 
     /**
+     * The text that appears below the excerpt in your article tile.
+     * Return 'null' to default to the authors set in your metadata.
+     */
+    public function accessoryText(): ?string
+    {
+        return null;
+    }
+
+    /**
      * Set the metadata of the article.
      */
     public function metadata(): Metadata

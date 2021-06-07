@@ -28,6 +28,8 @@ interface Template
 
     public function subtitle(): string;
 
+    public function accessoryText(): ?string;
+
     public function metadata(): Metadata;
 
     public function advertisingSettings(): AdvertisingSettings;
