@@ -68,7 +68,7 @@ class DummyTemplate extends Template
     public function components(): array
     {
         return [
-            new Heading($this->entry->get('title')),
+            new Heading($this->title()),
         ];
     }
 
