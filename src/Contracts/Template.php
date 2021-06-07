@@ -16,6 +16,8 @@ interface Template
 
     public function title(): string;
 
+    public function subtitle(): ?string;
+
     public function layout(): Layout;
 
     public function components(): array;
@@ -27,8 +29,6 @@ interface Template
     public function componentTextStyles(): array;
 
     public function textStyles(): array;
-
-    public function subtitle(): string;
 
     public function accessoryText(): ?string;
 

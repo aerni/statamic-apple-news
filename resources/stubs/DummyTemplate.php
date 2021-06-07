@@ -28,6 +28,31 @@ class DummyTemplate extends Template
     }
 
     /**
+     * Set an optional subtitle of the article.
+     */
+    public function subtitle(): ?string
+    {
+        return null;
+    }
+
+    /**
+     * An optional text that appears below the excerpt in your article tile.
+     */
+    public function accessoryText(): ?string
+    {
+        return null;
+    }
+
+    /**
+     * Set the metadata of the article.
+     */
+    public function metadata(): Metadata
+    {
+        return (new Metadata)
+            ->addAuthor('Michael Aerni');
+    }
+
+    /**
      * Set the layout for this template.
      */
     public function layout(): Layout
@@ -90,32 +115,6 @@ class DummyTemplate extends Template
         return [
             'default' => new TextStyle(),
         ];
-    }
-
-    /**
-     * Set the subtitle of the article.
-     */
-    public function subtitle(): string
-    {
-        return '';
-    }
-
-    /**
-     * The text that appears below the excerpt in your article tile.
-     * Return 'null' to default to the authors set in your metadata.
-     */
-    public function accessoryText(): ?string
-    {
-        return null;
-    }
-
-    /**
-     * Set the metadata of the article.
-     */
-    public function metadata(): Metadata
-    {
-        return (new Metadata)
-            ->addAuthor('Michael Aerni');
     }
 
     /**
