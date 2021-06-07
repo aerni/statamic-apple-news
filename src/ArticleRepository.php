@@ -41,7 +41,7 @@ class ArticleRepository implements Contract
                 return Api::article($id)->data->state;
             });
 
-            // Save the temp key to the regular key if the state if 'LIVE'.
+            // Persist the temp value to the article state if the state is 'LIVE'.
             if ($state === 'LIVE') {
                 Cache::put("apple_news_{$id}_state", $state);
             }
