@@ -30,7 +30,6 @@ class Article implements Contract
     {
         // Prepare the data for the request
         $data = [
-            'files' => [], // TODO: Support file attachments
             'metadata' => json_encode(['data' => $this->metadata()]),
             'json' => $this->json(),
         ];
