@@ -121,16 +121,31 @@ class Article implements Contract
             $this->template->layout()
         );
 
+        $this->setSubtitle();
+        $this->setMetadata();
         $this->addComponents();
         $this->addComponentLayouts();
         $this->addComponentStyles();
         $this->addComponentTextStyles();
-
-        $this->setSubtitle();
-        $this->setMetadata();
         $this->addTextStyles();
 
         return $this->document;
+    }
+
+    private function setSubtitle(): void
+    {
+        $this->document->setSubtitle($this->template->subtitle());
+    }
+
+    private function setMetadata(): void
+    {
+        $addon = Addon::get('aerni/apple-news');
+
+        $metadata = $this->template->metadata()
+            ->setGeneratorName('Statamic')
+            ->setGeneratorVersion(Statamic::version() . " ({$addon->name()} {$addon->version()})");
+
+        $this->document->setMetadata($metadata);
     }
 
     private function addComponents(): void
@@ -159,22 +174,6 @@ class Article implements Contract
         foreach ($this->template->componentTextStyles() as $name => $style) {
             $this->document->addComponentTextStyle($name, $style);
         }
-    }
-
-    private function setSubtitle(): void
-    {
-        $this->document->setSubtitle($this->template->subtitle());
-    }
-
-    private function setMetadata(): void
-    {
-        $addon = Addon::get('aerni/apple-news');
-
-        $metadata = $this->template->metadata()
-            ->setGeneratorName('Statamic')
-            ->setGeneratorVersion(Statamic::version() . " ({$addon->name()} {$addon->version()})");
-
-        $this->document->setMetadata($metadata);
     }
 
     private function addTextStyles(): void
