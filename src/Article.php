@@ -115,7 +115,12 @@ class Article implements Contract
 
     private function document(): Document
     {
-        $this->document = new Document($this->id(), $this->title(), $this->locale(), $this->template->layout());
+        $this->document = new Document(
+            $this->entry->id(),
+            $this->template->title(),
+            $this->entry->site()->locale(),
+            $this->template->layout()
+        );
 
         $this->addComponents();
         $this->addComponentLayouts();
@@ -190,20 +195,5 @@ class Article implements Contract
         foreach ($this->template->textStyles() as $name => $style) {
             $this->document->addTextStyle($name, $style);
         }
-    }
-
-    private function id(): string
-    {
-        return $this->entry->id();
-    }
-
-    private function title(): string
-    {
-        return $this->template->title();
-    }
-
-    private function locale(): string
-    {
-        return $this->entry->site()->locale();
     }
 }
