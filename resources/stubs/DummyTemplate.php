@@ -6,7 +6,6 @@ use Aerni\AppleNews\Template;
 use ChapterThree\AppleNewsAPI\Document\Metadata;
 use ChapterThree\AppleNewsAPI\Document\Layouts\Layout;
 use ChapterThree\AppleNewsAPI\Document\Styles\TextStyle;
-use ChapterThree\AppleNewsAPI\Document\AdvertisingSettings;
 use ChapterThree\AppleNewsAPI\Document\Components\Heading;
 use ChapterThree\AppleNewsAPI\Document\Styles\ComponentStyle;
 use ChapterThree\AppleNewsAPI\Document\Layouts\ComponentLayout;
@@ -115,13 +114,5 @@ class DummyTemplate extends Template
         return [
             'default' => new TextStyle(),
         ];
-    }
-
-    /**
-     * Set the advertising settings of the article.
-     */
-    public function advertisingSettings(): AdvertisingSettings
-    {
-        return (new AdvertisingSettings());
     }
 }

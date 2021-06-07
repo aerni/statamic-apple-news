@@ -3,7 +3,6 @@
 namespace Aerni\AppleNews;
 
 use Aerni\AppleNews\Contracts\Template as Contract;
-use ChapterThree\AppleNewsAPI\Document\AdvertisingSettings;
 use ChapterThree\AppleNewsAPI\Document\Layouts\Layout;
 use ChapterThree\AppleNewsAPI\Document\Metadata;
 use ChapterThree\AppleNewsAPI\Document\Styles\DocumentStyle;
@@ -46,8 +45,6 @@ abstract class Template implements Contract
     abstract public function componentTextStyles(): array;
 
     abstract public function textStyles(): array;
-
-    abstract public function advertisingSettings(): AdvertisingSettings;
 
     // abstract public function documentStyle(): DocumentStyle;
 }

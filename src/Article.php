@@ -127,7 +127,6 @@ class Article implements Contract
         $this->addComponentStyles();
         $this->addComponentTextStyles();
 
-        $this->setAdvertisingSettings();
         $this->setSubtitle();
         $this->setMetadata();
         // $this->setDocumentStyle();
@@ -162,11 +161,6 @@ class Article implements Contract
         foreach ($this->template->componentTextStyles() as $name => $style) {
             $this->document->addComponentTextStyle($name, $style);
         }
-    }
-
-    private function setAdvertisingSettings(): void
-    {
-        $this->document->setAdvertisingSettings($this->template->advertisingSettings());
     }
 
     private function setSubtitle(): void

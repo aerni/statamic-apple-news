@@ -2,7 +2,6 @@
 
 namespace Aerni\AppleNews\Contracts;
 
-use ChapterThree\AppleNewsAPI\Document\AdvertisingSettings;
 use ChapterThree\AppleNewsAPI\Document\Layouts\Layout;
 use ChapterThree\AppleNewsAPI\Document\Metadata;
 use ChapterThree\AppleNewsAPI\Document\Styles\DocumentStyle;
@@ -33,8 +32,6 @@ interface Template
     public function componentTextStyles(): array;
 
     public function textStyles(): array;
-
-    public function advertisingSettings(): AdvertisingSettings;
 
     // public function documentStyle(): DocumentStyle;
 }
