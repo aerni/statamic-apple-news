@@ -14,12 +14,12 @@ use ChapterThree\AppleNewsAPI\Document\Styles\ComponentTextStyle;
 class DummyTemplate extends Template
 {
     /**
-     * The name you see in the template dropdown in the Statamic CP.
+     * The template name that shows in the template dropdown in the Statamic CP.
      */
     public string $name = 'DummyTemplate';
 
     /**
-     * Set the title of the article.
+     * Sets the article title.
      */
     public function title(): string
     {
@@ -27,7 +27,7 @@ class DummyTemplate extends Template
     }
 
     /**
-     * Set an optional subtitle of the article.
+     * Sets an optional article subtitle.
      */
     public function subtitle(): ?string
     {
@@ -35,7 +35,7 @@ class DummyTemplate extends Template
     }
 
     /**
-     * An optional text that appears below the excerpt in your article tile.
+     * Sets an optional text that appears below the excerpt in your article tile.
      */
     public function accessoryText(): ?string
     {
@@ -43,7 +43,7 @@ class DummyTemplate extends Template
     }
 
     /**
-     * Set the metadata of the article.
+     * Sets the article metadata.
      */
     public function metadata(): Metadata
     {
@@ -52,7 +52,7 @@ class DummyTemplate extends Template
     }
 
     /**
-     * Set the layout for this template.
+     * Sets the article layout.
      */
     public function layout(): Layout
     {
