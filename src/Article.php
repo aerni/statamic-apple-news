@@ -199,7 +199,7 @@ class Article implements Contract
 
     private function title(): string
     {
-        return $this->entry->get('title');
+        return $this->template->title();
     }
 
     private function locale(): string

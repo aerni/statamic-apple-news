@@ -14,6 +14,8 @@ interface Template
 
     public function entry(Entry $entry): self;
 
+    public function title(): string;
+
     public function layout(): Layout;
 
     public function components(): array;

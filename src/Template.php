@@ -27,6 +27,8 @@ abstract class Template implements Contract
         return $this;
     }
 
+    abstract public function title(): string;
+
     abstract public function layout(): Layout;
 
     abstract public function components(): array;

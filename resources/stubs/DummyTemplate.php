@@ -20,6 +20,14 @@ class DummyTemplate extends Template
     public string $name = 'DummyTemplate';
 
     /**
+     * Set the title of the article.
+     */
+    public function title(): string
+    {
+        return $this->entry->get('title');
+    }
+
+    /**
      * Set the layout for this template.
      */
     public function layout(): Layout
