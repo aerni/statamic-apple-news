@@ -31,6 +31,10 @@ abstract class Template implements Contract
 
     abstract public function subtitle(): ?string;
 
+    abstract public function accessoryText(): ?string;
+
+    abstract public function metadata(): Metadata;
+
     abstract public function layout(): Layout;
 
     abstract public function components(): array;
@@ -42,10 +46,6 @@ abstract class Template implements Contract
     abstract public function componentTextStyles(): array;
 
     abstract public function textStyles(): array;
-
-    abstract public function accessoryText(): ?string;
-
-    abstract public function metadata(): Metadata;
 
     abstract public function advertisingSettings(): AdvertisingSettings;
 
