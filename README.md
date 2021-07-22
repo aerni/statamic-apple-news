@@ -1,10 +1,10 @@
 ![Statamic](https://flat.badgen.net/badge/Statamic/3.0+/FF269E) ![Packagist version](https://flat.badgen.net/packagist/v/aerni/apple-news/latest) ![Packagist Total Downloads](https://flat.badgen.net/packagist/dt/aerni/apple-news)
 
 # Apple News
-An addon to easily create and publish Apple News articles from your Statamic entries.
+An addon to easily publish your Statamic entries as articles on Apple News.
 
 ## Installation
-Install the addon using Composer.
+Install the addon using Composer:
 
 ```bash
 composer require aerni/apple-news
@@ -124,7 +124,7 @@ php please apple-news:template {name}
 This will publish a new template to `app/AppleNews/{name}.php`.
 
 ### Customizing a template
-Each template consists of a set of methods to configure your articles. They are powered by the excellent [AppleNewsAPI](https://github.com/chapter-three/AppleNewsAPI) library that lets you define your article's layout, components, styles, etc. Make sure to have a [look at the source](https://github.com/chapter-three/AppleNewsAPI/tree/master/src/Document) to get an idea of the classes and methods available to you.
+Each template consists of a set of methods to configure your articles. They are powered by the excellent [AppleNewsAPI](https://github.com/chapter-three/AppleNewsAPI) library that lets you define your article's layout, components, styles, etc. Make sure to [take a look at the source](https://github.com/chapter-three/AppleNewsAPI/tree/master/src/Document) to get an idea of the classes and methods available to you.
 
 ## Previewing an article
 
@@ -136,9 +136,9 @@ Use the following command and provide the `id` of the Statamic entry you want to
 php please apple-news:preview {entryId}
 ```
 
-This will create the `article.json` file in `storage/statamic/addons/apple-news/preview/`.
+This creates an `article.json` file of the entry in `storage/statamic/addons/apple-news/preview/`.
 
-Now you can open the `News Preview` app, select the `article.json` and the device you want to use for preview.
+Open the `News Preview` app, select the `article.json` file, and choose the device you want to use to preview your article.
 
 ## Creating an article
 
@@ -148,12 +148,12 @@ Open the entry in the Statamic CP that you want to publish on Apple News. Naviga
 ### Updating
 The article will be updated every time you save the Statamic entry in the CP.
 
-> **Note:** The article will actually be updated every time the `Statamic\Events\EntrySaving` event is dispatched.
+> **Note:** The article is updated every time the `Statamic\Events\EntrySaving` event is dispatched.
 
-### Unpublishing aka Deleting
-Unflick the `Published` toggle to delete the article. Deleting a Statamic entry will do the same.
+### Unpublishing / Deleting
+Unflick the `Published` toggle to delete the article from Apple News. Deleting the Statamic entry will do the same.
 
-> **Note:** There is no option to unpublish an article per se. Alternatively you can use the `Hidden` toggle.
+> **Note:** Apple News doesn't support unpublishing an article. Articles can only be deleted. Alternatively you can use the `Hidden` toggle to hide the article from Apple News feeds.
 
 ## License
 Apple News is **commercial software** but has an open-source codebase. If you want to use it in production, you'll need to [buy a license from the Statamic Marketplace](https://statamic.com/addons/aerni/apple-news).
