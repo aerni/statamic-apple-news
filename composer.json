@@ -1,6 +1,6 @@
 {
     "name": "aerni/apple-news",
-    "description": "Publish your Statamic content on Apple News",
+    "description": "A Statamic addon to publish your collection entries on Apple News.",
     "keywords": [
         "statamic",
         "apple",
