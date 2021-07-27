@@ -20,7 +20,7 @@
     "require": {
         "php": "^7.4 | ^8.0",
         "chapter-three/apple-news-api": "^0.3.11",
-        "spatie/laravel-ray": "^1.17",
+        "spatie/laravel-ray": "^1.24",
         "statamic/cms": "^3.1"
     },
     "require-dev": {
