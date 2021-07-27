@@ -20,7 +20,7 @@ return [
     | Site
     |--------------------------------------------------------------------------
     |
-    | The handle of the site you want to use to publish to Apple News.
+    | The handle of the site you want to use to publish on Apple News.
     |
     */
 
@@ -31,7 +31,7 @@ return [
     | Collections
     |--------------------------------------------------------------------------
     |
-    | The handles of the collections you want to publish articles from.
+    | The handles of the collections whose entries you want to publish.
     |
     */
 

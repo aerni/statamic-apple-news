@@ -1,7 +1,12 @@
 ![Statamic](https://flat.badgen.net/badge/Statamic/3.0+/FF269E) ![Packagist version](https://flat.badgen.net/packagist/v/aerni/apple-news/latest) ![Packagist Total Downloads](https://flat.badgen.net/packagist/dt/aerni/apple-news)
 
 # Apple News
-An addon to easily publish your Statamic entries as articles on Apple News.
+This Statamic addon provides a powerful integration with Apple News, making it possible to publish your collection entries to iPhone, iPad, and Mac users around the world.
+
+## Prerequisites
+You first need to [apply for News Publisher](https://www.icloud.com/newspublisher/) and create a channel before you can start publishing your content. Note that new channels have to go through an approval process before you can use them.
+
+Next, you need to get your channel's ID and API Credentials. You can get those in News Publisher `Settings -> Connect CMS -> API Key`.
 
 ## Installation
 Install the addon using Composer:
@@ -39,7 +44,7 @@ return [
     | Site
     |--------------------------------------------------------------------------
     |
-    | The handle of the site you want to use to publish to Apple News.
+    | The handle of the site you want to use to publish on Apple News.
     |
     */
 
@@ -50,7 +55,7 @@ return [
     | Collections
     |--------------------------------------------------------------------------
     |
-    | The handles of the collections you want to publish articles from.
+    | The handles of the collections whose entries you want to publish.
     |
     */
 
@@ -86,14 +91,14 @@ APPLE_NEWS_SECRET=********************************************
 ```
 
 ### Site
-Add the handle of the site you want to use to publish to Apple News:
+Add the handle of the site you want to use to publish on Apple News:
 
 ```php
 'site' => 'default'
 ```
 
 ### Collections
-Add the handles of the collections whose entries you want to publish to Apple News:
+Add the handles of the collections whose entries you want to publish on Apple News:
 
 ```php
 'collections' => [
@@ -112,7 +117,7 @@ Add your article template classes:
 ]
 ```
 
-## Templates
+## Article Templates
 
 ### Creating a template
 Create your first article template:
@@ -140,13 +145,13 @@ This creates an `article.json` file of the entry in `storage/statamic/addons/app
 
 Open the `News Preview` app, select the `article.json` file, and choose the device you want to use to preview your article.
 
-## Creating an article
+## Publishing Workflow
 
 ### Publishing
-Open the entry in the Statamic CP that you want to publish on Apple News. Navigate to the `Apple News` tab and customize the options to your liking. Once you're ready to publish, flick the `Published` toggle and save the entry. The article is now being processed by Apple News. Refresh the page to see the current `Publish State`.
+Open the entry in the Statamic Control Panel that you want to publish on Apple News. Navigate to the `Apple News` tab and customize the options to your liking. Once you're ready to publish, flick the `Published` toggle and save the entry. The article is now being processed by Apple News. Refresh the page to see the current `Publish State`.
 
 ### Updating
-The article will be updated every time you save the Statamic entry in the CP.
+The article will be updated every time you save the Statamic entry.
 
 > **Note:** The article is updated every time the `Statamic\Events\EntrySaving` event is dispatched.
 
