@@ -2,7 +2,7 @@
 
 namespace Aerni\AppleNews\Blueprints;
 
-use Aerni\AppleNews\Contracts\AppleNewsBlueprint;
+use Aerni\AppleNews\Contracts\Blueprint as Contract;
 use Aerni\AppleNews\Facades\Channel;
 use Aerni\AppleNews\Facades\Template;
 use Statamic\Contracts\Entries\Entry;
@@ -10,7 +10,7 @@ use Statamic\Facades\Blueprint;
 use Statamic\Facades\Site;
 use Statamic\Fields\Blueprint as StatamicBlueprint;
 
-class EntryBlueprint implements AppleNewsBlueprint
+class EntryBlueprint implements Contract
 {
     public static function make(Entry $entry): StatamicBlueprint
     {
