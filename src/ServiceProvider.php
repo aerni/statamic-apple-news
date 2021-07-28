@@ -36,7 +36,7 @@ class ServiceProvider extends AddonServiceProvider
     //     __DIR__.'/../resources/dist/css/apple-news.css',
     // ];
 
-    public function boot()
+    public function boot(): void
     {
         parent::boot();
 
@@ -45,12 +45,11 @@ class ServiceProvider extends AddonServiceProvider
         });
     }
 
-    // TODO: Check if I need all the bindings.
-    protected function bindContracts()
+    protected function bindContracts(): void
     {
         $this->app->singleton(
-            \Aerni\AppleNews\Contracts\Channel::class,
-            \Aerni\AppleNews\Channel::class
+            \Aerni\AppleNews\Contracts\Api::class,
+            \Aerni\AppleNews\Api::class
         );
 
         $this->app->singleton(
@@ -64,18 +63,13 @@ class ServiceProvider extends AddonServiceProvider
         );
 
         $this->app->singleton(
-            \Aerni\AppleNews\Contracts\ArticleManager::class,
-            \Aerni\AppleNews\ArticleManager::class
+            \Aerni\AppleNews\Contracts\Channel::class,
+            \Aerni\AppleNews\Channel::class
         );
 
         $this->app->singleton(
             \Aerni\AppleNews\Contracts\Storage::class,
             \Aerni\AppleNews\Storage::class
-        );
-
-        $this->app->singleton(
-            \Aerni\AppleNews\Contracts\Api::class,
-            \Aerni\AppleNews\Api::class
         );
 
         $this->app->singleton(
@@ -87,7 +81,5 @@ class ServiceProvider extends AddonServiceProvider
             \Aerni\AppleNews\Contracts\TemplateRepository::class,
             \Aerni\AppleNews\TemplateRepository::class
         );
-
-        return $this;
     }
 }
