@@ -17,10 +17,6 @@ class DeleteArticle
 
     protected function shouldDeleteArticle(Entry $entry): bool
     {
-        if ($entry->get('apple_news_published')) {
-            return false;
-        }
-
         // Only delete the article if there is an article id.
         if (! $entry->get('apple_news_id')) {
             return false;
