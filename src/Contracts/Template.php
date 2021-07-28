@@ -50,25 +50,25 @@ interface Template
     public function components(): array;
 
     /**
-     * An array of \ChapterThree\AppleNewsAPI\Document\Layouts\ComponentLayout.
+     * An associative array of \ChapterThree\AppleNewsAPI\Document\Layouts\ComponentLayout.
      * The key is the layout's name.
      */
     public function componentLayouts(): array;
 
     /**
-     * An array of \ChapterThree\AppleNewsAPI\Document\Styles\ComponentStyle.
+     * An associative array of \ChapterThree\AppleNewsAPI\Document\Styles\ComponentStyle.
      * The key is the styles's name.
      */
     public function componentStyles(): array;
 
     /**
-     * An array of \ChapterThree\AppleNewsAPI\Document\Styles\ComponentTextStyle.
+     * An associative array of \ChapterThree\AppleNewsAPI\Document\Styles\ComponentTextStyle.
      * The key is the styles's name.
      */
     public function componentTextStyles(): array;
 
     /**
-     * An array of \ChapterThree\AppleNewsAPI\Document\Styles\TextStyle.
+     * An associative array of \ChapterThree\AppleNewsAPI\Document\Styles\TextStyle.
      * The key is the styles's name.
      */
     public function textStyles(): array;

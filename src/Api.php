@@ -9,9 +9,6 @@ use stdClass;
 
 class Api implements Contract
 {
-    /**
-     * Get information about the channel.
-     */
     public function channel(): stdClass
     {
         return $this->get('/channels/{channel_id}', [
@@ -19,9 +16,6 @@ class Api implements Contract
         ]);
     }
 
-    /**
-     * Get information about the channel’s sections.
-     */
     public function sections(): stdClass
     {
         return $this->get('/channels/{channel_id}/sections', [
@@ -29,9 +23,6 @@ class Api implements Contract
         ]);
     }
 
-    /**
-     * Get information about a specific section.
-     */
     public function section(string $id): stdClass
     {
         return $this->get('/sections/{section_id}', [
@@ -39,17 +30,11 @@ class Api implements Contract
         ]);
     }
 
-    /**
-     * Get information about an article.
-     */
     public function article(string $id): stdClass
     {
         return $this->get('/articles/{article_id}', ['article_id' => $id]);
     }
 
-    /**
-     * Search for articles in the channel.
-     */
     public function search(array $params = []): stdClass
     {
         return $this->get('/channels/{channel_id}/articles', [
@@ -57,9 +42,6 @@ class Api implements Contract
         ], $params);
     }
 
-    /**
-     * Create a new article.
-     */
     public function createArticle(array $data): stdClass
     {
         return $this->post('/channels/{channel_id}/articles', [
@@ -67,9 +49,6 @@ class Api implements Contract
         ], $data);
     }
 
-    /**
-     * Update an article.
-     */
     public function updateArticle(string $id, array $data): stdClass
     {
         return $this->post('/articles/{article_id}', [
@@ -77,9 +56,6 @@ class Api implements Contract
         ], $data);
     }
 
-    /**
-     * Delete an article.
-     */
     public function deleteArticle(string $id): string
     {
         return $this->delete('/articles/{article_id}', [

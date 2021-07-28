@@ -20,12 +20,12 @@ interface Channel
     public function secret(): string;
 
     /**
-     * Get the site supported by this channel.
+     * Get the site used to publish.
      */
     public function site(): string;
 
     /**
-     * Get the collections supported by this channel.
+     * Get the publishable collections.
      */
     public function collections(): array;
 

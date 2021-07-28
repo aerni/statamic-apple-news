@@ -21,6 +21,7 @@ class DeleteArticle
             return false;
         }
 
+        // Only delete the article if there is an article id.
         if (! $entry->get('apple_news_id')) {
             return false;
         }

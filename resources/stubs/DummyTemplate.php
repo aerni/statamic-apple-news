@@ -14,7 +14,7 @@ use ChapterThree\AppleNewsAPI\Document\Styles\ComponentTextStyle;
 class DummyTemplate extends Template
 {
     /**
-     * The template name that shows in the template dropdown in the Statamic CP.
+     * The name of this template showing in the template dropdown in the Statamic Control Panel.
      */
     public string $name = 'DummyTemplate';
 
@@ -73,7 +73,7 @@ class DummyTemplate extends Template
     }
 
     /**
-     * An array of \ChapterThree\AppleNewsAPI\Document\Layouts\ComponentLayout.
+     * An associative array of \ChapterThree\AppleNewsAPI\Document\Layouts\ComponentLayout.
      * The key is the layout's name.
      */
     public function componentLayouts(): array
@@ -84,7 +84,7 @@ class DummyTemplate extends Template
     }
 
     /**
-     * An array of \ChapterThree\AppleNewsAPI\Document\Styles\ComponentStyle.
+     * An associative array of \ChapterThree\AppleNewsAPI\Document\Styles\ComponentStyle.
      * The key is the styles's name.
      */
     public function componentStyles(): array
@@ -95,7 +95,7 @@ class DummyTemplate extends Template
     }
 
     /**
-     * An array of \ChapterThree\AppleNewsAPI\Document\Styles\ComponentTextStyle.
+     * An associative array of \ChapterThree\AppleNewsAPI\Document\Styles\ComponentTextStyle.
      * The key is the styles's name.
      */
     public function componentTextStyles(): array
@@ -106,7 +106,7 @@ class DummyTemplate extends Template
     }
 
     /**
-     * An array of \ChapterThree\AppleNewsAPI\Document\Styles\TextStyle.
+     * An associative array of \ChapterThree\AppleNewsAPI\Document\Styles\TextStyle.
      * The key is the styles's name.
      */
     public function textStyles(): array

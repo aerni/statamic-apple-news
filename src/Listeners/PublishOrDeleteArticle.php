@@ -26,6 +26,7 @@ class PublishOrDeleteArticle
 
     protected function shouldPublishArticle(Entry $entry): bool
     {
+        // Only publish the article if the "Published" toggle is on.
         if (! $entry->get('apple_news_published')) {
             return false;
         }
@@ -35,10 +36,12 @@ class PublishOrDeleteArticle
 
     protected function shouldDeleteArticle(Entry $entry): bool
     {
+        // Only delete the article if the "Published" toggle is off.
         if ($entry->get('apple_news_published')) {
             return false;
         }
 
+        // Only delete the article if there is an article id.
         if (! $entry->get('apple_news_id')) {
             return false;
         }

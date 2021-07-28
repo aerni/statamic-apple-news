@@ -15,7 +15,7 @@ interface TemplateRepository
     public function find(string $key): Template;
 
     /**
-     * Get the names of all templates as array.
+     * Get an array of all template names.
      */
     public function toNameArray(): array;
 }

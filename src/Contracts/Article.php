@@ -5,12 +5,12 @@ namespace Aerni\AppleNews\Contracts;
 interface Article
 {
     /**
-     * Publish the article on Apple News and update the entry.
+     * Create or update the article on Apple News.
      */
     public function publish(): bool;
 
     /**
-     * Deletes an article on Apple News and resets the entry.
+     * Delete the article on Apple News and remove the data from the Statamic entry.
      */
     public function delete(): bool;
 
