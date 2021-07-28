@@ -54,7 +54,7 @@
     "extra": {
         "statamic": {
             "name": "Apple News",
-            "description": "Publish your Statamic content on Apple News"
+            "description": "Publish your collection entries on Apple News."
         },
         "laravel": {
             "providers": [
